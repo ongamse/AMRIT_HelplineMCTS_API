@@ -1,0 +1,76 @@
+package com.iemr.mcts.model.beneficiary;
+
+import com.iemr.mcts.model.user.HealthCareWorkerModel;
+import com.iemr.mcts.model.userbeneficiary.CityModel;
+import com.iemr.mcts.model.userbeneficiary.CommunityModel;
+import com.iemr.mcts.model.userbeneficiary.CountryModel;
+import com.iemr.mcts.model.userbeneficiary.District;
+import com.iemr.mcts.model.userbeneficiary.DistrictBlock;
+import com.iemr.mcts.model.userbeneficiary.DistrictBranchMapping;
+import com.iemr.mcts.model.userbeneficiary.Language;
+import com.iemr.mcts.model.userbeneficiary.ReligionModel;
+import com.iemr.mcts.model.userbeneficiary.StateModel;
+
+import lombok.Data;
+
+public @Data class BeneficiaryDemographicsModel
+{
+	private Long benDemographicsID;
+	private Long beneficiaryRegID;
+	private BeneficiaryModel beneficiaryModel;
+	private Integer educationID;
+	private String educationName;
+	private BeneficiaryEducationModel beneficiaryeducation;
+	private Integer occupationID;
+	private String occupationName;
+	private BeneficiaryOccupationModel beneficiaryoccupation;
+	private Short healthCareWorkerID;
+	private String healthCareWorkerName;
+	private HealthCareWorkerModel healthCareWorkerType;
+	private Integer incomeStatusID;
+	private String incomeStatusName;
+	private BeneficiaryIncomeStatusModel i_beneficiaryincomestatus;
+	private Integer communityID;
+	private String communityName;
+	private CommunityModel communityModel;
+	private CommunityModel m_community;
+	private Integer preferredLangID;
+	private String preferredLangName;
+	private Language m_language;
+	private Integer religionID;
+	private String religionName;
+	private ReligionModel m_religion;
+	private Boolean isPhoto;
+	private String photoFilePath;
+	private Boolean isBiometric;
+	private String biometricFilePath;
+	private String addressLine1;
+	private String addressLine2;
+	private String addressLine3;
+	private String addressLine4;
+	private String addressLine5;
+	private Integer cityID;
+	private String cityName;
+	private CityModel m_city;
+	private Integer stateID;
+	private String stateName;
+	private StateModel m_state;
+	private Integer districtID;
+	private String districtName;
+	private District m_district;
+	private Integer blockID;
+	private String blockName;
+	private DistrictBlock m_districtblock;
+	private Integer districtBranchID;
+	private String districtBranchName;
+	private DistrictBranchMapping m_districtbranchmapping;
+	private Integer countryID;
+	private String countryName;
+	private CountryModel m_country;
+	private String pinCode;
+	private Boolean isAddPresent;
+	private Boolean isAddPermanent;
+	private Boolean deleted;
+	private String createdBy;
+	private String modifiedBy;
+}
