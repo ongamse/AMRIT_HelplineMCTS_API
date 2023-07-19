@@ -53,8 +53,6 @@ public class HttpUtils {
 	// @Autowired
 	private HttpStatus status;
 
-	// @Autowired(required = true)
-	// @Qualifier("hibernateCriteriaBuilder")
 	public HttpUtils() {
 		if (rest == null) {
 			rest = new RestTemplate();
@@ -62,29 +60,13 @@ public class HttpUtils {
 			headers.add("Content-Type", "application/json");
 		}
 	}
-	// public HttpUtils() {
-	// if (rest == null) {
-	// rest = new RestTemplate();
-	// headers = new HttpHeaders();
-	// headers.add("Content-Type", "application/json");
-	// }
-	// }
-
-	// @Bean
-	// public HttpUtils httpUtils() {
-	// return new HttpUtils();
-	// }
 
 	public String get(String uri) {
 		String body;
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
 		setStatus(responseEntity.getStatusCode());
-		// if (status == HttpStatus.OK){
 		body = responseEntity.getBody();
-		// }else{
-		// responseEntity
-		// }
 		return body;
 	}
 
@@ -160,12 +142,10 @@ public class HttpUtils {
 				responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
 			} catch (FileNotFoundException e) {
 				logger.error(e.getMessage());
-			}
-			finally
-			{
-				if(multiPart!=null)
+			} finally {
+				if (multiPart != null)
 					multiPart.close();
-			}	
+			}
 		} else {
 			HttpEntity<String> requestEntity;
 			requestEntity = new HttpEntity<String>(data, headers);

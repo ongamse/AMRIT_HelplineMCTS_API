@@ -58,11 +58,10 @@ public class MCTSApplication extends SpringBootServletInitializer {
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
+
 	@Bean
-	public IEMRApplBeans instantiateBeans(){
-		
+	public IEMRApplBeans instantiateBeans() {
+
 		return new IEMRApplBeans();
 	}
 }
-
