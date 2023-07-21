@@ -40,10 +40,10 @@ import com.iemr.mcts.services.agent.MctsOutboundCallDetailService;
 import com.iemr.mcts.utils.exception.IEMRException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MctsOutboundCallDetailControllerTest {
+public class MCTSOutboundCallDetailControllerTest {
 
 	@InjectMocks
-	MctsOutboundCallDetailController mctsOutboundCallDetailController;
+	MCTSOutboundCallDetailController mctsOutboundCallDetailController;
 	
 	@Mock
 	MctsOutboundCallDetailService mctsOutboundCallDetailService;

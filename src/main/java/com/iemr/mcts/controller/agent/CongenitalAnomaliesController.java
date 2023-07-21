@@ -41,58 +41,42 @@ public class CongenitalAnomaliesController {
 	/**
 	 * Congenital Anomolies Service
 	 */
-	private CongenitalAnomaliesService congenitalAnomaliesService;
-	
-	/**
-	 * Inject Congenital Anomolies Service
-	 */
 	@Autowired
-	public void setCongenitalAnomaliesService(CongenitalAnomaliesService congenitalAnomaliesService){
-		
-		this.congenitalAnomaliesService = congenitalAnomaliesService;
-	}
-	
+	private CongenitalAnomaliesService congenitalAnomaliesService;
+
 	/**
 	 * Child Congenital AnomaliesService
 	 */
-	private ChildCongenitalAnomaliesService childCongenitalAnomaliesService;
-	
-	/**
-	 * Inject Child Congenital AnomaliesService
-	 */
 	@Autowired
-	public void setChildCongenitalAnomaliesService(ChildCongenitalAnomaliesService childCongenitalAnomaliesService){
-		
-		this.childCongenitalAnomaliesService = childCongenitalAnomaliesService;
-	}
-	
+	private ChildCongenitalAnomaliesService childCongenitalAnomaliesService;
+
 	@CrossOrigin()
-	@RequestMapping(value="/get/conganomolies", method = RequestMethod.POST, headers = "Authorization")
-	public String getCongAnomolies(){
-		
-		OutputResponse response  = new OutputResponse();
-		try{
-			
+	@RequestMapping(value = "/get/conganomolies", method = RequestMethod.POST, headers = "Authorization")
+	public String getCongAnomolies() {
+
+		OutputResponse response = new OutputResponse();
+		try {
+
 			response.setResponse(congenitalAnomaliesService.getCongenitalAnomalies());
-		}catch (Exception e) {
-			
+		} catch (Exception e) {
+
 			response.setError(e);
 		}
-		return response.toString(); 
+		return response.toString();
 	}
-	
+
 	@CrossOrigin()
-	@RequestMapping(value="/get/child/conganomolies", method = RequestMethod.POST, headers = "Authorization")
-	public String getchildCA(@ApiParam("{\"childID\":\"Integer \"}") @RequestBody String request){
-		
-		OutputResponse response  = new OutputResponse();
-		try{
-			
+	@RequestMapping(value = "/get/child/conganomolies", method = RequestMethod.POST, headers = "Authorization")
+	public String getchildCA(@ApiParam("{\"childID\":\"Integer \"}") @RequestBody String request) {
+
+		OutputResponse response = new OutputResponse();
+		try {
+
 			response.setResponse(childCongenitalAnomaliesService.getChildCongenitalAnomalies(request));
-		}catch (Exception e) {
-			
+		} catch (Exception e) {
+
 			response.setError(e);
 		}
-		return response.toString(); 
+		return response.toString();
 	}
 }

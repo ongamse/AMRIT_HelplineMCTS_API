@@ -33,32 +33,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.mcts.services.agent.MctsDataTransactionService;
 import com.iemr.mcts.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping(value = "/mctsdatatransactioncontroller")
-public class MctsDataTransactionController {
+public class MCTSDataTransactionController {
 
 	/**
 	 * private MctsDataTransactionService
 	 */
+	@Autowired
 	private MctsDataTransactionService mctsDataTransactionService;
 
-	/**
-	 * Inject MctsDataTransactionService
-	 */
-	@Autowired
-	public void setMctsDataTransactionService(MctsDataTransactionService mctsDataTransactionService) {
-
-		this.mctsDataTransactionService = mctsDataTransactionService;
-	}
-
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	@CrossOrigin
+	@ApiOperation(value = "Update MCTS data")
 	@RequestMapping(value = "/edit/mctsdata", method = RequestMethod.POST, headers = "Authorization")
 	public String updateData(@RequestBody String request, HttpServletRequest servletRequest) {
 
@@ -72,16 +61,17 @@ public class MctsDataTransactionController {
 		}
 		return response.toString();
 	}
-	
+
 	/**
 	 * 
 	 * @param request
 	 * @return
 	 */
 	@CrossOrigin
+	@ApiOperation(value = "Associate beneficiary id")
 	@RequestMapping(value = "/associate/beneficiaryID", method = RequestMethod.POST, headers = "Authorization")
-	public String associateBeneficiaryID(@ApiParam("{\"mCTSID_no\":\"Integer\", \"beneficiaryRegID\":\"String \"}") 
-			@RequestBody String request) {
+	public String associateBeneficiaryID(
+			@ApiParam("{\"mCTSID_no\":\"Integer\", \"beneficiaryRegID\":\"String \"}") @RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
 		try {

@@ -37,10 +37,10 @@ import com.iemr.mcts.services.agent.MctsCallResponseService;
 import com.iemr.mcts.utils.exception.IEMRException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MctsCallResponseControllerTest {
+public class MCTSCallResponseControllerTest {
 
 	@InjectMocks
-	MctsCallResponseController mctsCallResponseController;
+	MCTSCallResponseController mctsCallResponseController;
 	
 	@Mock
 	MctsCallResponseService mctsCallResponseService;

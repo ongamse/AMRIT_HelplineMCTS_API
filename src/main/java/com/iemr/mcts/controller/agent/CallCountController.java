@@ -37,6 +37,7 @@ import com.iemr.mcts.data.supervisor.OutboundCallAnsweredCountDetail;
 import com.iemr.mcts.services.agent.CallCountService;
 import com.iemr.mcts.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
@@ -44,34 +45,24 @@ import io.swagger.annotations.ApiParam;
 public class CallCountController {
 
 	Logger logger = LoggerFactory.getLogger(CallCountController.class);
-	
+
 	/**
 	 * CallCountService service
 	 */
+	@Autowired
 	private CallCountService callCountService;
 
-	/**
-	 * Inject CallCountService service
-	 */
-
-	@Autowired
-	public void setCallCountService(CallCountService callCountService) {
-		this.callCountService = callCountService;
-	}
-	
 	@CrossOrigin
-	@RequestMapping(value = "/getCallAnsweredCount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
-			consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String getCallAnsweredCount(@ApiParam("{\"providerServiceMapID\":\"Integer \", \"agentID\":\"Integer\"}")
-			@RequestBody OutboundCallAnsweredCountDetail outboundCallAnsweredCountDetail, HttpServletRequest httpRequest)
-	{
+	@ApiOperation(value = "Get count of answered calls")
+	@RequestMapping(value = "/getCallAnsweredCount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getCallAnsweredCount(
+			@ApiParam("{\"providerServiceMapID\":\"Integer \", \"agentID\":\"Integer\"}") @RequestBody OutboundCallAnsweredCountDetail outboundCallAnsweredCountDetail,
+			HttpServletRequest httpRequest) {
 		OutputResponse response = new OutputResponse();
-		logger.info("getCallAnsweredCount request "+outboundCallAnsweredCountDetail);
-		try
-		{
+		logger.info("getCallAnsweredCount request " + outboundCallAnsweredCountDetail);
+		try {
 			response.setResponse(callCountService.getCallAnsweredCount(outboundCallAnsweredCountDetail));
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("getCallAnsweredCount failed with error " + e.getMessage(), e);
 			response.setError(e);
 		}
@@ -79,25 +70,22 @@ public class CallCountController {
 		return response.toString();
 	}
 
-	
 	@CrossOrigin
-	@RequestMapping(value = "/getCallVerifiedCount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
-			consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String getCallVerifiedCount(@ApiParam("{\"providerServiceMapID\":\"Integer \", \"agentID\":\"Integer\"}")
-			@RequestBody OutboundCallAnsweredCountDetail outboundCallAnsweredCountDetail, HttpServletRequest httpRequest)
-	{
+	@ApiOperation(value = "Get count of verified calls")
+	@RequestMapping(value = "/getCallVerifiedCount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getCallVerifiedCount(
+			@ApiParam("{\"providerServiceMapID\":\"Integer \", \"agentID\":\"Integer\"}") @RequestBody OutboundCallAnsweredCountDetail outboundCallAnsweredCountDetail,
+			HttpServletRequest httpRequest) {
 		OutputResponse response = new OutputResponse();
-		logger.info("getCallVerifiedCount request "+outboundCallAnsweredCountDetail);
-		try
-		{
+		logger.info("getCallVerifiedCount request " + outboundCallAnsweredCountDetail);
+		try {
 			response.setResponse(callCountService.getCallVerifiedCount(outboundCallAnsweredCountDetail));
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("getCallVerifiedCount failed with error " + e.getMessage(), e);
 			response.setError(e);
 		}
 		logger.info("getCallVerifiedCount response " + response.toString());
 		return response.toString();
 	}
-	
+
 }

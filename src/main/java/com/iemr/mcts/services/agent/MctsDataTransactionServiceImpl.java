@@ -212,8 +212,6 @@ public class MctsDataTransactionServiceImpl implements MctsDataTransactionServic
 
 				}
 				
-//				MctsDataReaderDetail newMctsDataReaderDetail = mctsOutboundCall.getMctsDataReaderDetail();
-//				newMctsDataReaderDetail.setHigh_Risk(old.getHigh_Risk());
 				mctsDataHandlerRepository.save(mctsOutboundCall.getMctsDataReaderDetail());
 
 			}
