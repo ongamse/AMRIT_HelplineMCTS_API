@@ -37,10 +37,10 @@ import com.iemr.mcts.services.agent.MctsDataTransactionService;
 import com.iemr.mcts.utils.exception.IEMRException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MctsDataTransactionControllerTest {
+public class MCTSDataTransactionControllerTest {
 
 	@InjectMocks
-	MctsDataTransactionController mctsDataTransactionController;
+	MCTSDataTransactionController mctsDataTransactionController;
 	
 	@Mock
 	MctsDataTransactionService mctsDataTransactionService;

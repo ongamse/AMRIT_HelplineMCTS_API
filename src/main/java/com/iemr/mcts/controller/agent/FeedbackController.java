@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.mcts.services.agent.FeedbackService;
 import com.iemr.mcts.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
@@ -44,24 +45,11 @@ public class FeedbackController {
 	/**
 	 * Feed back service
 	 */
-	private FeedbackService feedbackService;
-	
-	/**
-	 * set feedback service
-	 * @param feedbackService
-	 */
 	@Autowired
-	public void setFeedBackService(FeedbackService feedbackService){
-		
-		this.feedbackService = feedbackService;
-	}
-	
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
+	private FeedbackService feedbackService;
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get feedback list")
 	@RequestMapping(value="/complaint/list", method = RequestMethod.POST, headers = "Authorization")
 	public String feedBackList(@ApiParam("{\"beneficiaryRegID\":\"Integer \"}") @RequestBody String request){
 		logger.info("feedBackList request "+request);

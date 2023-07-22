@@ -19,7 +19,7 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see https://www.gnu.org/licenses/.
 */
-package com.iemr.mcts.controller.secondoryreport;
+package com.iemr.mcts.controller.report;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,7 +47,7 @@ import io.swagger.annotations.ApiParam;
 @CrossOrigin
 @RequestMapping({ "/mctsReportController" })
 @RestController
-public class MctsSecondaryReportController {
+public class MCTSReportController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	@Autowired
 	private SecondaryDataReportService secondaryReportService;
