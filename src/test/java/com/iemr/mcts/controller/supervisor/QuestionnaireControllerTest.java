@@ -39,10 +39,10 @@ import com.iemr.mcts.services.supervisor.MctsQAMappingService;
 import com.iemr.mcts.services.supervisor.QuestionnaireService;
 
 @RunWith(MockitoJUnitRunner.class)
-public class QuestionerControllerTest {
+public class QuestionnaireControllerTest {
 
 	@InjectMocks
-	QuestionerController questionerController;
+	QuestionnaireController questionerController;
 	
 	@Mock
 	QuestionnaireService questionnaireService;

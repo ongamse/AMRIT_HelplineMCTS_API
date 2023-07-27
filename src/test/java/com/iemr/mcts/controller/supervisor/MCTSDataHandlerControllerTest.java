@@ -46,10 +46,10 @@ import com.iemr.mcts.services.supervisor.MctsDataHandlerService;
 import com.iemr.mcts.utils.exception.IEMRException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MctsDataHandlerControllerTest {
+public class MCTSDataHandlerControllerTest {
 
 	@InjectMocks
-	MctsDataHandlerController mctsDataHandlerController;
+	MCTSDataHandlerController mctsDataHandlerController;
 	
 	@Mock
 	MctsDataHandlerService mctsDataHandlerService;

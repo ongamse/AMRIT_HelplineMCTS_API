@@ -31,41 +31,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.mcts.services.supervisor.MctsStatewiseFieldsService;
 import com.iemr.mcts.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/mctsStatewiseFieldsController")
-public class MctsStatewiseFieldsController {
+public class MCTSStatewiseFieldController {
 
 	/**
 	 * mcta statewise fields controller
 	 */
-	private MctsStatewiseFieldsService mctsStatewiseFieldsService;
-	
-	/**
-	 * Inject
-	 */
 	@Autowired
-	public void setMctsStatewiseFieldsService(MctsStatewiseFieldsService mctsStatewiseFieldsService){
-		
-		this.mctsStatewiseFieldsService = mctsStatewiseFieldsService;
-	}
-	
+	private MctsStatewiseFieldsService mctsStatewiseFieldsService;
+
 	@CrossOrigin
+	@ApiOperation(value = "Get variables based on provider service map id and field")
 	@RequestMapping(value = "/get/variablenames", method = RequestMethod.POST, headers = "Authorization")
-	public String getVariables(@ApiParam("{\"providerServiceMapID\":\"Integer\", \"fieldFor\":\"String Name\"}") @RequestBody String request){
-		
+	public String getVariables(
+			@ApiParam("{\"providerServiceMapID\":\"Integer\", \"fieldFor\":\"String Name\"}") @RequestBody String request) {
+
 		OutputResponse response = new OutputResponse();
-		
-		try{
-			
+
+		try {
+
 			response.setResponse(mctsStatewiseFieldsService.getVariables(request));
-			
-		}catch (Exception e) {
-			
+
+		} catch (Exception e) {
+
 			response.setError(e);
 		}
-		
+
 		return response.toString();
 	}
 }

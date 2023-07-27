@@ -39,10 +39,10 @@ import com.iemr.mcts.services.supervisor.MctsStatewiseFieldsService;
 import com.iemr.mcts.utils.exception.IEMRException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MctsStatewiseFieldsControllerTest {
+public class MCTSStatewiseFieldControllerTest {
 
 	@InjectMocks
-	MctsStatewiseFieldsController mctsStatewiseFieldsController;
+	MCTSStatewiseFieldController mctsStatewiseFieldsController;
 	
 	@Mock
 	MctsStatewiseFieldsService mctsStatewiseFieldsService;
