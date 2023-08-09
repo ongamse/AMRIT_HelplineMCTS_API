@@ -174,7 +174,7 @@ public interface MCTSOutboundCallRepository extends CrudRepository<MctsOutboundC
 			@Param("childID") Long childID);
 
 	@Query("select call from MctsOutboundCall call, MctsOutboundCallDetail md "
-			+ "where call.obCallID = md.obCallID and md.czentrixCallID = :clientID group by call.obCallID")
+			+ "where call.obCallID = md.obCallID and md.callCentreID = :clientID group by call.obCallID")
 	public MctsOutboundCall findOnClientID(@Param("clientID") String clientID);
 	
 	public MctsOutboundCall findByMotherIDAndOutboundCallType(Long motherID, 

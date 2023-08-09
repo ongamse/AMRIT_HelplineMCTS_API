@@ -78,8 +78,8 @@ public class MctsOutboundCallDetail {
 	private String outboundCallType;
 
 	@Expose
-	@Column(name = "CallID")  //CzentrixCallID
-	private String czentrixCallID;
+	@Column(name = "CallID")  //CallCentreID
+	private String callCentreID;
 
 	@Expose
 	@Column(name = "IsOutbound")
@@ -193,12 +193,12 @@ public class MctsOutboundCallDetail {
 	/**
 	 * Overloaded parameter Constructor
 	 */
-	public MctsOutboundCallDetail(Long callDetailID, String outboundCallType, String czentrixCallID,
+	public MctsOutboundCallDetail(Long callDetailID, String outboundCallType, String callCentreID,
 			String changeLog, String remark, String smsAdvice, java.util.Date createdDate, String createdBy) {
 
 		this.callDetailID = callDetailID;
 		this.outboundCallType = outboundCallType;
-		this.czentrixCallID = czentrixCallID;
+		this.callCentreID = callCentreID;
 		this.changeLog = changeLog;
 		this.remark = remark;
 		this.smsAdvice = smsAdvice;
@@ -327,18 +327,18 @@ public class MctsOutboundCallDetail {
 	}
 
 	/**
-	 * @return the czentrixCallID
+	 * @return the callCentreID
 	 */
-	public String getCzentrixCallID() {
-		return czentrixCallID;
+	public String getCallCentreID() {
+		return callCentreID;
 	}
 
 	/**
-	 * @param czentrixCallID
-	 *            the czentrixCallID to set
+	 * @param callCentreID
+	 *            the callCentreID to set
 	 */
-	public void setCzentrixCallID(String czentrixCallID) {
-		this.czentrixCallID = czentrixCallID;
+	public void setCallCentreID(String callCentreID) {
+		this.callCentreID = callCentreID;
 	}
 
 	/**
