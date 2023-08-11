@@ -327,18 +327,18 @@ public class MctsOutboundCallDetail {
 	}
 
 	/**
-	 * @return the callCentreID
+	 * @return the callId
 	 */
-	public String getCallCentreID() {
+	public String getCallId() {
 		return callId;
 	}
 
 	/**
-	 * @param callCentreID
-	 *            the callCentreID to set
+	 * @param callId
+	 *            the callId to set
 	 */
-	public void setCallCentreID(String callCentreID) {
-		this.callId = callCentreID;
+	public void setCallId(String callId) {
+		this.callId = callId;
 	}
 
 	/**

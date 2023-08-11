@@ -486,7 +486,7 @@ public class MctsOutboundCallDetailServiceImpl implements MctsOutboundCallDetail
 				MctsOutboundCallDetail.class);
 		MctsOutboundCall benCall;
 		MctsOutboundCall mctsOutboundCall = mctsOutboundCallRepository
-				.findOnClientID(mctsOutboundCallDetail.getCallCentreID());
+				.findOnClientID(mctsOutboundCallDetail.getCallId());
 		if (mctsOutboundCall != null) {
 
 			if (mctsOutboundCall.getChildValidDataHandler() != null) {
@@ -528,7 +528,7 @@ public class MctsOutboundCallDetailServiceImpl implements MctsOutboundCallDetail
 		mctsOutboundCallDetail.setCallTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
 
 		MctsOutboundCallDetail call = mctsOutboundCallDetailRepository
-				.isAvailable(mctsOutboundCallDetail.getCallCentreID(), mctsOutboundCallDetail.getAllocatedUserID());
+				.isAvailable(mctsOutboundCallDetail.getCallId(), mctsOutboundCallDetail.getAllocatedUserID());
 		if (call == null) {
 			call = mctsOutboundCallDetailRepository.save(mctsOutboundCallDetail);
 		}
@@ -617,7 +617,7 @@ public class MctsOutboundCallDetailServiceImpl implements MctsOutboundCallDetail
 		mctsOutboundCallDetail = mctsOutboundCallDetailRepository
 				.findByCallDetailID(mctsOutboundCallDetail.getCallDetailID());
 		MctsOutboundCall mctsOutboundCall = mctsOutboundCallRepository
-				.findOnClientID(mctsOutboundCallDetail.getCallCentreID());
+				.findOnClientID(mctsOutboundCallDetail.getCallId());
 		
 		String updObj = mctsOutbondCallService.getUpdatedObject(OutputMapper.gson().toJson(mctsOutboundCall), servletRequest);
 		mctsOutboundCall = InputMapper.gson().fromJson(updObj,

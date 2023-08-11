@@ -67,12 +67,12 @@ public class MctsOutboundCallDetailServiceImplTest {
 		mctsOutboundCall.setChildID(new Long("101"));
 		List<MctsOutboundCallDetail> list=Lists.newArrayList();
 		MctsOutboundCallDetail mctsOutboundCallDetail=new MctsOutboundCallDetail();
-		mctsOutboundCallDetail.setCallCentreID("505");
+		mctsOutboundCallDetail.setCallId("505");
 		list.add(mctsOutboundCallDetail);
 		doReturn(list).when(mctsOutboundCallDetailRepository).getChildCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"callCentreID\":\"505\""));
+			assertTrue(response.contains("\"callId\":\"505\""));
 		} catch (IEMRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,12 +86,12 @@ public class MctsOutboundCallDetailServiceImplTest {
 		mctsOutboundCall.setMotherID(new Long("101"));
 		List<MctsOutboundCallDetail> list=Lists.newArrayList();
 		MctsOutboundCallDetail mctsOutboundCallDetail=new MctsOutboundCallDetail();
-		mctsOutboundCallDetail.setCallCentreID("505");
+		mctsOutboundCallDetail.setCallId("505");
 		list.add(mctsOutboundCallDetail);
 		doReturn(list).when(mctsOutboundCallDetailRepository).getMotherCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"callCentreID\":\"505\""));
+			assertTrue(response.contains("\"callId\":\"505\""));
 		} catch (IEMRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 		MctsOutboundCall mctsOutboundCall=new MctsOutboundCall();
 		mctsOutboundCall.setAllocatedUserID(202);
 		mctsOutboundCallDetail.setMctsOutboundCall(mctsOutboundCall);
-		mctsOutboundCallDetail.setCallCentreID("101");
+		mctsOutboundCallDetail.setCallId("101");
 		HttpServletRequest servletRequest=mock(HttpServletRequest.class);
 		MctsDataReaderDetail rReaderDetail=new MctsDataReaderDetail();
 		rReaderDetail.setBeneficiaryRegID(new Long("1019"));
@@ -123,7 +123,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 	public void getBeneficiaryDetailsTest1()
 	{
 		MctsOutboundCallDetail mctsOutboundCallDetail=new MctsOutboundCallDetail();
-		mctsOutboundCallDetail.setCallCentreID("101");
+		mctsOutboundCallDetail.setCallId("101");
 		HttpServletRequest servletRequest=mock(HttpServletRequest.class);
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getBeneficiaryDetails(mctsOutboundCallDetail.toString(),servletRequest);
@@ -137,11 +137,11 @@ public class MctsOutboundCallDetailServiceImplTest {
 	public void createCallHistoryTest()
 	{
 		MctsOutboundCallDetail mctsOutboundCallDetail=new MctsOutboundCallDetail();
-		mctsOutboundCallDetail.setCallCentreID("101");
+		mctsOutboundCallDetail.setCallId("101");
 		doReturn(mctsOutboundCallDetail).when(mctsOutboundCallDetailRepository).isAvailable(Mockito.anyString(),Mockito.anyInt());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.createCallHistory(mctsOutboundCallDetail.toString());
-			assertTrue(response.contains("\"callCentreID\":\"101\""));
+			assertTrue(response.contains("\"callId\":\"101\""));
 		} catch (IEMRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

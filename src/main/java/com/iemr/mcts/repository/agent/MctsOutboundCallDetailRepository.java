@@ -48,9 +48,9 @@ public interface MctsOutboundCallDetailRepository extends CrudRepository<MctsOut
 			+ " (select c.obCallID from MctsOutboundCall c where c.childID = :childID) order by cd.createdDate desc")
 	public ArrayList<MctsOutboundCallDetail> getChildCallHistory(@Param("childID") Long childID);
 	
-	@Query("select cd from MctsOutboundCallDetail cd where cd.callCentreID = :callCentreID "
+	@Query("select cd from MctsOutboundCallDetail cd where cd.callId = :callId "
 			+ "and cd.allocatedUserID = :allocatedUserID")
-	public MctsOutboundCallDetail isAvailable(@Param("callCentreID") String callCentreID, @Param("allocatedUserID") Integer allocatedUserID);
+	public MctsOutboundCallDetail isAvailable(@Param("callId") String callId, @Param("allocatedUserID") Integer allocatedUserID);
 	
 	@Transactional
 	@Modifying
