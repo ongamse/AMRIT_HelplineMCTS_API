@@ -43,29 +43,7 @@ import com.iemr.mcts.data.supervisor.MctsOutboundCall;
 @RestResource(exported = false)
 public interface MCTSOutboundCallRepository extends CrudRepository<MctsOutboundCall, Long> {
 	
-/*	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail "
-			+ "where mctscalls.callStatus!='Completed' and  mctscalls.allocatedUserID = :userID ")
-			//+ " and (mctscalls.callDateFrom>=current_date() or mctscalls.callDateTo>=current_date())")
-	public ArrayList<MctsOutboundCall> getUsersMotherAllocatedCalls(@Param("userID") Integer userID);
-	
-	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.childValidDataHandler "
-			+ "where mctscalls.callStatus!='Completed' and  mctscalls.allocatedUserID = :userID ")
-			//+ " and (mctscalls.callDateFrom>=current_date() or mctscalls.callDateTo>=current_date())")
-	public ArrayList<MctsOutboundCall> getUsersChildAllocatedCalls(@Param("userID") Integer userID);*/
-/*
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail "
-//			+ " where (mctscalls.callDateFrom between :fromDate and :toDate or mctscalls.callDateTo between :fromDate and :toDate) "
-//			+ "and mctscalls.allocationStatus='unallocated' and mctscalls.providerServiceMapID = :providerServiceMapID")
-	@Query(value="call PR_FetchMCTS_2(:providerServiceMapID, :fromDate, :toDate)", nativeQuery=true)
-	public ArrayList<MctsOutboundCall> getMotherUnAllocatedCalls(@Param("fromDate") Date fromDate,
-			@Param("toDate") Date toDate, @Param("providerServiceMapID") Long providerServiceMapID);
-	
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.childValidDataHandler "
-//			+ " where (mctscalls.callDateFrom between :fromDate and :toDate or mctscalls.callDateTo between :fromDate and :toDate) "
-//			+ "and mctscalls.allocationStatus='unallocated' and mctscalls.providerServiceMapID = :providerServiceMapID")
-	@Query(value="call PR_FetchMCTS_4(:providerServiceMapID, :fromDate, :toDate)", nativeQuery=true)
-	public ArrayList<MctsOutboundCall> getChildUnAllocatedCalls(@Param("fromDate") Date fromDate,
-			@Param("toDate") Date toDate, @Param("providerServiceMapID") Long providerServiceMapID);*/
+
 
 	@Query("select mctscalls, u from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail, M_User u "
 			+ "where mctscalls.allocatedUserID in (select userID from mctscalls.user u where :firstName is null or u.firstName = :firstName "
@@ -76,46 +54,11 @@ public interface MCTSOutboundCallRepository extends CrudRepository<MctsOutboundC
 			@Param("lastName") String lastName, @Param("fromDate") Date fromDate, @Param("toDate") Date toDate,
 			@Param("providerServiceMapID") Long providerServiceMapID);
 
-/*	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail "
-			+ "where mctscalls.allocatedUserID = :userID "
-			+ " and (mctscalls.callDateFrom between :fromDate and :toDate or mctscalls.callDateTo between :fromDate and :toDate)"
-			+ " and mctscalls.callStatus!='Completed'")
-	public ArrayList<MctsOutboundCall> getUsersMotherAllocatedCalls(@Param("userID") Integer userID,
-			@Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
-	
-	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.childValidDataHandler "
-			+ "where mctscalls.allocatedUserID = :userID "
-			+ " and (mctscalls.callDateFrom between :fromDate and :toDate or mctscalls.callDateTo between :fromDate and :toDate)"
-			+ " and mctscalls.callStatus!='Completed'")
-	public ArrayList<MctsOutboundCall> getUsersChildAllocatedCalls(@Param("userID") Integer userID,
-			@Param("fromDate") Date fromDate, @Param("toDate") Date toDate);*/
-/*
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail "
-//			+ "where mctscalls.allocationStatus='unallocated' and "
-//			+ "(mctscalls.callDateFrom>=current_date() or mctscalls.callDateTo>=current_date()) "
-//			+ "and mctscalls.providerServiceMapID = :providerServiceMapID ")
-	@Query(value="call PR_FetchMCTS_1(:providerServiceMapID)", nativeQuery=true)
-	public ArrayList<MctsOutboundCall> getMotherUnallocatedCalls(@Param("providerServiceMapID") Long providerServiceMapID);
-	
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.childValidDataHandler "
-//			+ "where mctscalls.allocationStatus='unallocated' and (mctscalls.callDateFrom>=current_date() or mctscalls.callDateTo>=current_date()) "
-//			+ "and mctscalls.providerServiceMapID = :providerServiceMapID ")
-	@Query(value="call PR_FetchMCTS_3(:providerServiceMapID)", nativeQuery=true)
-	public ArrayList<MctsOutboundCall> getChildUnallocatedCalls(@Param("providerServiceMapID") Long providerServiceMapID);*/
-	
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.mctsDataReaderDetail "
-//			+ "where mctscalls.allocatedUserID = :allocatedUserID "
-//			+ "and mctscalls.callStatus!='Completed' and (mctscalls.prefferedCallDate is null or mctscalls.prefferedCallDate <= current_date()) ")
-			//+ " group by mctscalls.motherID")
-//	@Procedure(name="allocated-mother-records")
+
 	@Query(value="call PR_FetchMotherOutboundWorklist(:allocatedUserID)", nativeQuery=true)
 	public  ArrayList<MctsOutboundCall> getMotherAllocatedCalls(@Param("allocatedUserID") Integer allocatedUserID);
 	
-//	@Query("select mctscalls from MctsOutboundCall mctscalls join mctscalls.childValidDataHandler "
-//			+ "where mctscalls.allocatedUserID = :allocatedUserID  "
-//			+ " and mctscalls.callStatus!='Completed' and (mctscalls.prefferedCallDate is null or mctscalls.prefferedCallDate = current_date()) ")
-			//+ " group by mctscalls.childID")
-//	@Procedure(name="allocated-child-records")
+
 	@Query(value="call PR_FetchChildOutboundWorklist(:allocatedUserID)", nativeQuery=true)
 	public ArrayList<MctsOutboundCall> getChildAllocatedCalls(@Param("allocatedUserID") Integer allocatedUserID);
 
@@ -174,7 +117,7 @@ public interface MCTSOutboundCallRepository extends CrudRepository<MctsOutboundC
 			@Param("childID") Long childID);
 
 	@Query("select call from MctsOutboundCall call, MctsOutboundCallDetail md "
-			+ "where call.obCallID = md.obCallID and md.callId = :clientID group by call.obCallID")
+			+ "where call.obCallID = md.obCallID and md.czentrixCallID = :clientID group by call.obCallID")
 	public MctsOutboundCall findOnClientID(@Param("clientID") String clientID);
 	
 	public MctsOutboundCall findByMotherIDAndOutboundCallType(Long motherID, 
@@ -233,13 +176,7 @@ public interface MCTSOutboundCallRepository extends CrudRepository<MctsOutboundC
 			+ "where mctscalls.callDateFrom =:futureDate and mctscalls.beneficiaryRegID !=null and mctscalls.allocationStatus='allocated' ")
 	public ArrayList<MctsOutboundCall> getFutureCallList(@Param("futureDate") Date futureDate);
 	
-/*	@Query("select call.createdDate, call.remark from MctsOutboundCallDetail call "
-			+ "where call.beneficiaryRegID = :beneficiaryRegID and call.isMother!= null order by call.callDetailID desc ")
-	public ArrayList<Objects[]> getLastCallDetailByRegID(@Param("beneficiaryRegID") Long beneficiaryRegID);
-	
-	@Query("select call.createdDate, call.remark from MctsOutboundCallDetail call "
-			+ "where call.obCallID = :obCallID and call.isMother!= null order by call.callDetailID desc ")
-	public ArrayList<Objects[]> getLastCallDetailByOBCallID(@Param("obCallID") Long obCallID);*/
+
 	
 	@Query(value="call PR_FetchMotherOutboundWorklist(:allocatedUserID)", nativeQuery=true)
 	public  List<Objects[]> getAgentAllocatedMotherList(@Param("allocatedUserID") Integer allocatedUserID);
