@@ -526,6 +526,11 @@ public class MctsOutboundCallDetailServiceImpl implements MctsOutboundCallDetail
 				MctsOutboundCallDetail.class);
 		
 		mctsOutboundCallDetail.setCallTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
+		
+		//Setting default call type Id
+		if(mctsOutboundCallDetail.getCallTypeID() == null) {
+			mctsOutboundCallDetail.setCallTypeID(9999);		
+			}
 
 		MctsOutboundCallDetail call = mctsOutboundCallDetailRepository
 				.isAvailable(mctsOutboundCallDetail.getCallId(), mctsOutboundCallDetail.getAllocatedUserID());
