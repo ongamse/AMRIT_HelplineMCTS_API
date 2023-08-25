@@ -72,9 +72,8 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(list).when(mctsOutboundCallDetailRepository).getChildCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"callId\":\"505\""));
+			assertTrue(response.contains("\"czentrixCallID\":\"505\""));
 		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -91,9 +90,8 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(list).when(mctsOutboundCallDetailRepository).getMotherCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"callId\":\"505\""));
+			assertTrue(response.contains("\"czentrixCallID\":\"505\""));
 		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -110,14 +108,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 		rReaderDetail.setBeneficiaryRegID(new Long("1019"));
 		mctsOutboundCall.setMctsDataReaderDetail(rReaderDetail);
 		doReturn(mctsOutboundCall).when(mctsOutboundCallRepository).findOnClientID(Mockito.anyString());
-		/*try {
-			String response = null ; 
-			//=mctsOutboundCallDetailServiceImpl.getBeneficiaryDetails(mctsOutboundCallDetail.toString(),servletRequest);
-			assertTrue(response.contains("\"allocatedUserID\":202"));
-		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		
 	}
 	@Test
 	public void getBeneficiaryDetailsTest1()
@@ -129,7 +120,6 @@ public class MctsOutboundCallDetailServiceImplTest {
 			String response=mctsOutboundCallDetailServiceImpl.getBeneficiaryDetails(mctsOutboundCallDetail.toString(),servletRequest);
 			assertTrue(response.contains("No beneficiary found with this caller id"));
 		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -141,26 +131,10 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(mctsOutboundCallDetail).when(mctsOutboundCallDetailRepository).isAvailable(Mockito.anyString(),Mockito.anyInt());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.createCallHistory(mctsOutboundCallDetail.toString());
-			assertTrue(response.contains("\"callId\":\"101\""));
+			assertTrue(response.contains("\"czentrixCallID\":\"101\""));
 		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-/*	@Test
-	public void sendSmsAdviceTest()
-	{
-		MctsOutboundCallDetail mctsOutboundCallDetail=new MctsOutboundCallDetail();
-		mctsOutboundCallDetail.setSmsAdvice("sms");
-		mctsOutboundCallDetail.setSmsPh("phone");
-		mctsOutboundCallDetail.setCallDetailID(new Long("101"));
-		try {
-			String response=mctsOutboundCallDetailServiceImpl.sendSmsAdvice(mctsOutboundCallDetail.toString());
-			assertTrue(response.contains("SMS sent successfully"));
-		} catch (IEMRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}*/
+
 }
