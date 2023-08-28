@@ -72,7 +72,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(list).when(mctsOutboundCallDetailRepository).getChildCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"czentrixCallID\":\"505\""));
+			assertTrue(response.contains("\"callId\":\"505\""));
 		} catch (IEMRException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +90,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(list).when(mctsOutboundCallDetailRepository).getMotherCallHistory(Mockito.anyLong());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.getCallHistory(mctsOutboundCall.toString());
-			assertTrue(response.contains("\"czentrixCallID\":\"505\""));
+			assertTrue(response.contains("\"callId\":\"505\""));
 		} catch (IEMRException e) {
 			e.printStackTrace();
 		}
@@ -131,7 +131,7 @@ public class MctsOutboundCallDetailServiceImplTest {
 		doReturn(mctsOutboundCallDetail).when(mctsOutboundCallDetailRepository).isAvailable(Mockito.anyString(),Mockito.anyInt());
 		try {
 			String response=mctsOutboundCallDetailServiceImpl.createCallHistory(mctsOutboundCallDetail.toString());
-			assertTrue(response.contains("\"czentrixCallID\":\"101\""));
+			assertTrue(response.contains("\"callId\":\"101\""));
 		} catch (IEMRException e) {
 			e.printStackTrace();
 		}
