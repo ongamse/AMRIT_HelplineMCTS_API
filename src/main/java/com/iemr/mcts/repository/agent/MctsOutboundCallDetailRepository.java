@@ -33,6 +33,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iemr.mcts.data.agent.MctsOutboundCallDetail;
+import com.iemr.mcts.data.supervisor.CallType;
 
 @Repository
 @RestResource(exported = false)
@@ -99,5 +100,8 @@ public interface MctsOutboundCallDetailRepository extends CrudRepository<MctsOut
 	
 	@Query("select cd.callTime from MctsOutboundCallDetail cd where cd.callDetailID = :callDetailID")
 	public Timestamp getCallStartTime(@Param("callDetailID") Long callDetailID);
+
+	@Query(value="select CallTypeID from db_iemr.m_callType where CallType='default null callType' order by CreatedDate DESC LIMIT 1",nativeQuery=true)
+	public Integer getCallTypeId();
 
 }
