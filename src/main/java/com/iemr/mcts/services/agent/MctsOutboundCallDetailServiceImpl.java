@@ -529,7 +529,7 @@ public class MctsOutboundCallDetailServiceImpl implements MctsOutboundCallDetail
 		
 		//Setting default call type Id
 		if(mctsOutboundCallDetail.getCallTypeID() == null) {
-			mctsOutboundCallDetail.setCallTypeID(9999);		
+			mctsOutboundCallDetail.setCallTypeID(mctsOutboundCallDetailRepository.getCallTypeId());		
 			}
 
 		MctsOutboundCallDetail call = mctsOutboundCallDetailRepository
