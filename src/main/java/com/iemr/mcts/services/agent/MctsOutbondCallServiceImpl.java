@@ -335,7 +335,6 @@ public class MctsOutbondCallServiceImpl implements MctsOutbondCallService {
 				List<Long> buff = userCallList.get(userIndex);
 
 				buff.add(mctsOutboundCall.getObCallID());
-//				mctsOutboundCallRepository.allocateCall(mctsOutboundCall.getObCallID(), users.get(userIndex));
 				count++;
 			}
 		}
@@ -463,11 +462,7 @@ public class MctsOutbondCallServiceImpl implements MctsOutbondCallService {
 
 		mctsOutboundCallRepository.moveToBucket(listobCallIDs);
 
-		/*
-		 * for (MctsOutboundCall call : mctsOutboundCalls) {
-		 * 
-		 * mctsOutboundCallRepository.moveToBucket(call.getObCallID()); }
-		 */ return "Data moved to bucket successfully";
+		return "Data moved to bucket successfully";
 	}
 
 	/*
@@ -669,7 +664,6 @@ public class MctsOutbondCallServiceImpl implements MctsOutbondCallService {
 		});
 
 		List<OutboundWorklist> mctsOutboundCallList = new ArrayList<OutboundWorklist>();
-		// mctsOutboundCallList.addAll(agentMotherList);
 		Collections.sort(agentMotherList, OutboundWorklist.getSortCompoByCallFromDate());
 		return agentMotherList.toString();
 	}

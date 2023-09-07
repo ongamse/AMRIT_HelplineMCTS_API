@@ -131,7 +131,6 @@ public class QuestionnaireController {
 					+ "\"triggerFeedback\":\"Boolean- Value\", \"triggerFeedbackFor\":\"String-Value\", \"showText\":\"Boolean- Value\", \"showTextFor\":\"String-Value\"}") @RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-//		questionnaireService.updateQuestionnaire(request));
 			String res = questionnaireService.updateQuestionnaire(request);
 			if (res != null)
 				response.setResponse(res);
@@ -233,9 +232,6 @@ public class QuestionnaireController {
 		return response.toString();
 	}
 
-	/*
-	 * Saves the child question ID of parent question ID.
-	 */
 	@CrossOrigin()
 	@ApiOperation(value = "Add derived question")
 	@RequestMapping(value = "derived/addDeriveQuestion", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")

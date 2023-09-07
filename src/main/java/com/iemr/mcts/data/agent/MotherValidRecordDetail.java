@@ -26,19 +26,15 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.mcts.data.supervisor.FileManager;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 
 @SuppressWarnings("serial")
@@ -78,7 +74,7 @@ public class MotherValidRecordDetail implements Serializable {
 
 	@Expose
 	@Column(name = "PhoneNo_Of_Whom")
-	private String phoneNoOfWhom; //pri_ph
+	private String phoneNoOfWhom;
 
 	@Expose
 	@Column(name = "Whom_PhoneNo")
@@ -119,30 +115,30 @@ public class MotherValidRecordDetail implements Serializable {
 	@Expose
 	@Column(name = "District_Name")
 	private String districtName;
-	
+
 	@Expose
 	@Column(name = "Taluka_Name")
 	private String talukaName;
-	
+
 	@Expose
 	@Column(name = "Taluka_ID")
 	private Long talukaID;
-	
+
 	@Expose
 	@Column(name = "Block_ID")
 	private Long blockID;
-	
+
 	@Expose
 	@Column(name = "Block_Name")
 	private String blockName;
-	
+
 	@Expose
 	@Column(name = "SubCenter_Name")
 	private String subCenterName;
-	
+
 	@Column(name = "Village_ID")
 	private Long villageID;
-	
+
 	@Column(name = "Village_Name")
 	private String VillageName;
 	@Column(name = "City_ID")
@@ -359,7 +355,7 @@ public class MotherValidRecordDetail implements Serializable {
 	@Expose
 	@Column(name = "High_Risk")
 	private Boolean highRisk;
-	
+
 	@Expose
 	@Column(name = "High_Risk_Reason")
 	private String highRiskReason;
@@ -436,29 +432,6 @@ public class MotherValidRecordDetail implements Serializable {
 	@Column(name = "IsAllocated")
 	private Boolean isAllocated;
 
-//	/**
-//	 * file manager mapping
-//	 */
-//	@OneToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "fileID", insertable = false, updatable = false)
-//	private FileManager fileManager;
-
-	/**
-	 * mapping with outbound call
-	 */
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "motherValidRecordDetail")
-//	private List<MctsOutboundCall> mctsOutboundCalls;
-
-	/**
-	 * mapping with mcts call answered
-	 */
-	// @OneToMany(fetch = FetchType.LAZY, mappedBy = "motherValidRecordDetail")
-	// // for now not required
-	// private List<MctsCallResponseDetail> mctsCallResponseDetails;
-
-	/**
-	 * Default Constructor
-	 */
 	public MotherValidRecordDetail() {
 
 	}
@@ -538,8 +511,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param motherValidRecordID
-	 *            the motherValidRecordID to set
+	 * @param motherValidRecordID the motherValidRecordID to set
 	 */
 	public void setMotherValidRecordID(Long motherValidRecordID) {
 		this.motherValidRecordID = motherValidRecordID;
@@ -553,13 +525,12 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param edd
-	 *            the edd to set
+	 * @param edd the edd to set
 	 */
 	public void setEdd(Date edd) {
 		this.edd = edd;
 	}
-	
+
 	/**
 	 * @return the rowID
 	 */
@@ -568,8 +539,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param rowID
-	 *            the rowID to set
+	 * @param rowID the rowID to set
 	 */
 	public void setRowID(Long rowID) {
 		this.rowID = rowID;
@@ -583,8 +553,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param dateOfEntry
-	 *            the dateOfEntry to set
+	 * @param dateOfEntry the dateOfEntry to set
 	 */
 	public void setDateOfEntry(Date dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
@@ -598,8 +567,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param entryTpe
-	 *            the entryTpe to set
+	 * @param entryTpe the entryTpe to set
 	 */
 	public void setEntryTpe(Long entryTpe) {
 		this.entryTpe = entryTpe;
@@ -613,8 +581,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param mctsIDNo
-	 *            the mctsIDNo to set
+	 * @param mctsIDNo the mctsIDNo to set
 	 */
 	public void setMctsIDNo(Long mctsIDNo) {
 		this.mctsIDNo = mctsIDNo;
@@ -628,8 +595,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -643,8 +609,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param husbandName
-	 *            the husbandName to set
+	 * @param husbandName the husbandName to set
 	 */
 	public void setHusbandName(String husbandName) {
 		this.husbandName = husbandName;
@@ -658,8 +623,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param phoneNoOfWhom
-	 *            the phoneNoOfWhom to set
+	 * @param phoneNoOfWhom the phoneNoOfWhom to set
 	 */
 	public void setPhoneNoOfWhom(String phoneNoOfWhom) {
 		this.phoneNoOfWhom = phoneNoOfWhom;
@@ -673,13 +637,11 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param whomPhoneNo
-	 *            the whomPhoneNo to set
+	 * @param whomPhoneNo the whomPhoneNo to set
 	 */
 	public void setWhomPhoneNo(String whomPhoneNo) {
 		this.whomPhoneNo = whomPhoneNo;
 	}
-	
 
 	/**
 	 * @return the birthDate
@@ -689,8 +651,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param birthDate
-	 *            the birthDate to set
+	 * @param birthDate the birthDate to set
 	 */
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
@@ -704,8 +665,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param age
-	 *            the age to set
+	 * @param age the age to set
 	 */
 	public void setAge(Long age) {
 		this.age = age;
@@ -719,8 +679,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param bloodGroup
-	 *            the bloodGroup to set
+	 * @param bloodGroup the bloodGroup to set
 	 */
 	public void setBloodGroup(String bloodGroup) {
 		this.bloodGroup = bloodGroup;
@@ -734,8 +693,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param caste
-	 *            the caste to set
+	 * @param caste the caste to set
 	 */
 	public void setCaste(String caste) {
 		this.caste = caste;
@@ -749,8 +707,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param aadharNo
-	 *            the aadharNo to set
+	 * @param aadharNo the aadharNo to set
 	 */
 	public void setAadharNo(String aadharNo) {
 		this.aadharNo = aadharNo;
@@ -764,8 +721,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param stateID
-	 *            the stateID to set
+	 * @param stateID the stateID to set
 	 */
 	public void setStateID(Long stateID) {
 		this.stateID = stateID;
@@ -779,8 +735,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param stateName
-	 *            the stateName to set
+	 * @param stateName the stateName to set
 	 */
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
@@ -794,8 +749,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param districtID
-	 *            the districtID to set
+	 * @param districtID the districtID to set
 	 */
 	public void setDistrictID(Long districtID) {
 		this.districtID = districtID;
@@ -809,8 +763,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param districtName
-	 *            the districtName to set
+	 * @param districtName the districtName to set
 	 */
 	public void setDistrictName(String districtName) {
 		this.districtName = districtName;
@@ -824,8 +777,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param villageName
-	 *            the villageName to set
+	 * @param villageName the villageName to set
 	 */
 	public void setVillageName(String villageName) {
 		VillageName = villageName;
@@ -839,8 +791,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param cityID
-	 *            the cityID to set
+	 * @param cityID the cityID to set
 	 */
 	public void setCityID(Long cityID) {
 		CityID = cityID;
@@ -854,8 +805,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param cityName
-	 *            the cityName to set
+	 * @param cityName the cityName to set
 	 */
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
@@ -869,8 +819,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anmName
-	 *            the anmName to set
+	 * @param anmName the anmName to set
 	 */
 	public void setAnmName(String anmName) {
 		this.anmName = anmName;
@@ -884,8 +833,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anmPh
-	 *            the anmPh to set
+	 * @param anmPh the anmPh to set
 	 */
 	public void setAnmPh(String anmPh) {
 		this.anmPh = anmPh;
@@ -899,8 +847,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param ashaName
-	 *            the ashaName to set
+	 * @param ashaName the ashaName to set
 	 */
 	public void setAshaName(String ashaName) {
 		this.ashaName = ashaName;
@@ -914,8 +861,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param ashaPh
-	 *            the ashaPh to set
+	 * @param ashaPh the ashaPh to set
 	 */
 	public void setAshaPh(String ashaPh) {
 		this.ashaPh = ashaPh;
@@ -929,8 +875,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pHCID
-	 *            the pHCID to set
+	 * @param pHCID the pHCID to set
 	 */
 	public void setPHCID(String pHCID) {
 		PHCID = pHCID;
@@ -944,8 +889,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pHCName
-	 *            the pHCName to set
+	 * @param pHCName the pHCName to set
 	 */
 	public void setPHCName(String pHCName) {
 		PHCName = pHCName;
@@ -959,8 +903,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param sUBPHCID
-	 *            the sUBPHCID to set
+	 * @param sUBPHCID the sUBPHCID to set
 	 */
 	public void setSUBPHCID(String sUBPHCID) {
 		SUBPHCID = sUBPHCID;
@@ -974,8 +917,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param sUBPHCName
-	 *            the sUBPHCName to set
+	 * @param sUBPHCName the sUBPHCName to set
 	 */
 	public void setSUBPHCName(String sUBPHCName) {
 		SUBPHCName = sUBPHCName;
@@ -989,8 +931,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param yR
-	 *            the yR to set
+	 * @param yR the yR to set
 	 */
 	public void setyR(Character yR) {
 		this.yR = yR;
@@ -1004,8 +945,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param gPVillage
-	 *            the gPVillage to set
+	 * @param gPVillage the gPVillage to set
 	 */
 	public void setGPVillage(String gPVillage) {
 		GPVillage = gPVillage;
@@ -1019,8 +959,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param address
-	 *            the address to set
+	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -1034,8 +973,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param lmpDate
-	 *            the lmpDate to set
+	 * @param lmpDate the lmpDate to set
 	 */
 	public void setLmpDate(Date lmpDate) {
 		this.lmpDate = lmpDate;
@@ -1049,8 +987,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anc1Date
-	 *            the anc1Date to set
+	 * @param anc1Date the anc1Date to set
 	 */
 	public void setAnc1Date(Date anc1Date) {
 		this.anc1Date = anc1Date;
@@ -1064,8 +1001,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anc2Date
-	 *            the anc2Date to set
+	 * @param anc2Date the anc2Date to set
 	 */
 	public void setAnc2Date(Date anc2Date) {
 		this.anc2Date = anc2Date;
@@ -1079,8 +1015,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anc3Date
-	 *            the anc3Date to set
+	 * @param anc3Date the anc3Date to set
 	 */
 	public void setAnc3Date(Date anc3Date) {
 		this.anc3Date = anc3Date;
@@ -1094,8 +1029,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anc4Date
-	 *            the anc4Date to set
+	 * @param anc4Date the anc4Date to set
 	 */
 	public void setAnc4Date(Date anc4Date) {
 		this.anc4Date = anc4Date;
@@ -1109,8 +1043,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param ancComplication
-	 *            the ancComplication to set
+	 * @param ancComplication the ancComplication to set
 	 */
 	public void setAncComplication(Boolean ancComplication) {
 		this.ancComplication = ancComplication;
@@ -1124,8 +1057,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param tT1Date
-	 *            the tT1Date to set
+	 * @param tT1Date the tT1Date to set
 	 */
 	public void setTT1Date(Date tT1Date) {
 		TT1Date = tT1Date;
@@ -1139,8 +1071,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param tT2Date
-	 *            the tT2Date to set
+	 * @param tT2Date the tT2Date to set
 	 */
 	public void setTT2Date(Date tT2Date) {
 		TT2Date = tT2Date;
@@ -1154,8 +1085,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param tTBoosterDate
-	 *            the tTBoosterDate to set
+	 * @param tTBoosterDate the tTBoosterDate to set
 	 */
 	public void setTTBoosterDate(Date tTBoosterDate) {
 		TTBoosterDate = tTBoosterDate;
@@ -1169,8 +1099,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param iFA100GivenDate
-	 *            the iFA100GivenDate to set
+	 * @param iFA100GivenDate the iFA100GivenDate to set
 	 */
 	public void setIFA100GivenDate(Date iFA100GivenDate) {
 		IFA100GivenDate = iFA100GivenDate;
@@ -1184,8 +1113,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param eDD
-	 *            the eDD to set
+	 * @param eDD the eDD to set
 	 */
 	public void seteDD(Date edd) {
 		this.edd = edd;
@@ -1199,8 +1127,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param anemia
-	 *            the anemia to set
+	 * @param anemia the anemia to set
 	 */
 	public void setAnemia(Boolean anemia) {
 		this.anemia = anemia;
@@ -1214,8 +1141,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param rTISTI
-	 *            the rTISTI to set
+	 * @param rTISTI the rTISTI to set
 	 */
 	public void setRTISTI(Character rTISTI) {
 		RTISTI = rTISTI;
@@ -1229,8 +1155,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryLnkFacility
-	 *            the deliveryLnkFacility to set
+	 * @param deliveryLnkFacility the deliveryLnkFacility to set
 	 */
 	public void setDeliveryLnkFacility(String deliveryLnkFacility) {
 		DeliveryLnkFacility = deliveryLnkFacility;
@@ -1244,8 +1169,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param facilityName
-	 *            the facilityName to set
+	 * @param facilityName the facilityName to set
 	 */
 	public void setFacilityName(String facilityName) {
 		FacilityName = facilityName;
@@ -1259,8 +1183,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryDate
-	 *            the deliveryDate to set
+	 * @param deliveryDate the deliveryDate to set
 	 */
 	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
@@ -1274,8 +1197,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryPlacehomeType
-	 *            the deliveryPlacehomeType to set
+	 * @param deliveryPlacehomeType the deliveryPlacehomeType to set
 	 */
 	public void setDeliveryPlacehomeType(String deliveryPlacehomeType) {
 		DeliveryPlacehomeType = deliveryPlacehomeType;
@@ -1289,8 +1211,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryPlacePublic
-	 *            the deliveryPlacePublic to set
+	 * @param deliveryPlacePublic the deliveryPlacePublic to set
 	 */
 	public void setDeliveryPlacePublic(String deliveryPlacePublic) {
 		DeliveryPlacePublic = deliveryPlacePublic;
@@ -1304,8 +1225,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryPlacePrivate
-	 *            the deliveryPlacePrivate to set
+	 * @param deliveryPlacePrivate the deliveryPlacePrivate to set
 	 */
 	public void setDeliveryPlacePrivate(String deliveryPlacePrivate) {
 		DeliveryPlacePrivate = deliveryPlacePrivate;
@@ -1319,8 +1239,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryType
-	 *            the deliveryType to set
+	 * @param deliveryType the deliveryType to set
 	 */
 	public void setDeliveryType(String deliveryType) {
 		DeliveryType = deliveryType;
@@ -1334,8 +1253,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deliveryComplications
-	 *            the deliveryComplications to set
+	 * @param deliveryComplications the deliveryComplications to set
 	 */
 	public void setDeliveryComplications(String deliveryComplications) {
 		DeliveryComplications = deliveryComplications;
@@ -1349,8 +1267,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param dischargeDate
-	 *            the dischargeDate to set
+	 * @param dischargeDate the dischargeDate to set
 	 */
 	public void setDischargeDate(Date dischargeDate) {
 		DischargeDate = dischargeDate;
@@ -1364,8 +1281,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param abortion
-	 *            the abortion to set
+	 * @param abortion the abortion to set
 	 */
 	public void setAbortion(String abortion) {
 		this.abortion = abortion;
@@ -1379,8 +1295,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pNCHomeVisit
-	 *            the pNCHomeVisit to set
+	 * @param pNCHomeVisit the pNCHomeVisit to set
 	 */
 	public void setPNCHomeVisit(String pNCHomeVisit) {
 		PNCHomeVisit = pNCHomeVisit;
@@ -1394,8 +1309,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pNCComplication
-	 *            the pNCComplication to set
+	 * @param pNCComplication the pNCComplication to set
 	 */
 	public void setPNCComplication(String pNCComplication) {
 		PNCComplication = pNCComplication;
@@ -1409,8 +1323,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pPCMethod
-	 *            the pPCMethod to set
+	 * @param pPCMethod the pPCMethod to set
 	 */
 	public void setPPCMethod(String pPCMethod) {
 		PPCMethod = pPCMethod;
@@ -1424,8 +1337,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param pNCCheckup
-	 *            the pNCCheckup to set
+	 * @param pNCCheckup the pNCCheckup to set
 	 */
 	public void setPNCCheckup(Boolean pNCCheckup) {
 		PNCCheckup = pNCCheckup;
@@ -1439,8 +1351,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param outcomeNos
-	 *            the outcomeNos to set
+	 * @param outcomeNos the outcomeNos to set
 	 */
 	public void setOutcomeNos(Long outcomeNos) {
 		OutcomeNos = outcomeNos;
@@ -1454,8 +1365,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child1id
-	 *            the child1ID to set
+	 * @param child1id the child1ID to set
 	 */
 	public void setChild1ID(Long child1id) {
 		child1ID = child1id;
@@ -1469,8 +1379,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child1Name
-	 *            the child1Name to set
+	 * @param child1Name the child1Name to set
 	 */
 	public void setChild1Name(String child1Name) {
 		Child1Name = child1Name;
@@ -1484,8 +1393,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child1Gender
-	 *            the child1Gender to set
+	 * @param child1Gender the child1Gender to set
 	 */
 	public void setChild1Gender(String child1Gender) {
 		Child1Gender = child1Gender;
@@ -1499,8 +1407,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child1Weight
-	 *            the child1Weight to set
+	 * @param child1Weight the child1Weight to set
 	 */
 	public void setChild1Weight(Long child1Weight) {
 		Child1Weight = child1Weight;
@@ -1514,8 +1421,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child1BreastFeeding
-	 *            the child1BreastFeeding to set
+	 * @param child1BreastFeeding the child1BreastFeeding to set
 	 */
 	public void setChild1BreastFeeding(Boolean child1BreastFeeding) {
 		Child1BreastFeeding = child1BreastFeeding;
@@ -1529,8 +1435,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child2id
-	 *            the child2ID to set
+	 * @param child2id the child2ID to set
 	 */
 	public void setChild2ID(Long child2id) {
 		child2ID = child2id;
@@ -1544,8 +1449,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child2Name
-	 *            the child2Name to set
+	 * @param child2Name the child2Name to set
 	 */
 	public void setChild2Name(String child2Name) {
 		Child2Name = child2Name;
@@ -1559,8 +1463,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child2Gender
-	 *            the child2Gender to set
+	 * @param child2Gender the child2Gender to set
 	 */
 	public void setChild2Gender(String child2Gender) {
 		Child2Gender = child2Gender;
@@ -1574,8 +1477,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child2Weight
-	 *            the child2Weight to set
+	 * @param child2Weight the child2Weight to set
 	 */
 	public void setChild2Weight(Long child2Weight) {
 		Child2Weight = child2Weight;
@@ -1589,8 +1491,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child2BreastFeeding
-	 *            the child2BreastFeeding to set
+	 * @param child2BreastFeeding the child2BreastFeeding to set
 	 */
 	public void setChild2BreastFeeding(Boolean child2BreastFeeding) {
 		Child2BreastFeeding = child2BreastFeeding;
@@ -1604,8 +1505,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child3id
-	 *            the child3ID to set
+	 * @param child3id the child3ID to set
 	 */
 	public void setChild3ID(Long child3id) {
 		child3ID = child3id;
@@ -1619,8 +1519,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child3Name
-	 *            the child3Name to set
+	 * @param child3Name the child3Name to set
 	 */
 	public void setChild3Name(String child3Name) {
 		Child3Name = child3Name;
@@ -1634,8 +1533,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child3Gender
-	 *            the child3Gender to set
+	 * @param child3Gender the child3Gender to set
 	 */
 	public void setChild3Gender(String child3Gender) {
 		Child3Gender = child3Gender;
@@ -1649,8 +1547,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child3Weight
-	 *            the child3Weight to set
+	 * @param child3Weight the child3Weight to set
 	 */
 	public void setChild3Weight(Long child3Weight) {
 		Child3Weight = child3Weight;
@@ -1664,8 +1561,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child3BreastFeeding
-	 *            the child3BreastFeeding to set
+	 * @param child3BreastFeeding the child3BreastFeeding to set
 	 */
 	public void setChild3BreastFeeding(Boolean child3BreastFeeding) {
 		Child3BreastFeeding = child3BreastFeeding;
@@ -1679,8 +1575,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child4id
-	 *            the child4ID to set
+	 * @param child4id the child4ID to set
 	 */
 	public void setChild4ID(Long child4id) {
 		child4ID = child4id;
@@ -1694,8 +1589,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child4Name
-	 *            the child4Name to set
+	 * @param child4Name the child4Name to set
 	 */
 	public void setChild4Name(String child4Name) {
 		Child4Name = child4Name;
@@ -1709,8 +1603,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child4Gender
-	 *            the child4Gender to set
+	 * @param child4Gender the child4Gender to set
 	 */
 	public void setChild4Gender(String child4Gender) {
 		Child4Gender = child4Gender;
@@ -1724,8 +1617,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child4Weight
-	 *            the child4Weight to set
+	 * @param child4Weight the child4Weight to set
 	 */
 	public void setChild4Weight(Long child4Weight) {
 		Child4Weight = child4Weight;
@@ -1739,8 +1631,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param child4BreastFeeding
-	 *            the child4BreastFeeding to set
+	 * @param child4BreastFeeding the child4BreastFeeding to set
 	 */
 	public void setChild4BreastFeeding(Boolean child4BreastFeeding) {
 		Child4BreastFeeding = child4BreastFeeding;
@@ -1754,8 +1645,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param motherRegDate
-	 *            the motherRegDate to set
+	 * @param motherRegDate the motherRegDate to set
 	 */
 	public void setMotherRegDate(Date motherRegDate) {
 		MotherRegDate = motherRegDate;
@@ -1769,8 +1659,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param lastUpdateDate
-	 *            the lastUpdateDate to set
+	 * @param lastUpdateDate the lastUpdateDate to set
 	 */
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		LastUpdateDate = lastUpdateDate;
@@ -1784,8 +1673,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param eID
-	 *            the eID to set
+	 * @param eID the eID to set
 	 */
 	public void seteID(String eID) {
 		this.eID = eID;
@@ -1799,8 +1687,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param eIDTime
-	 *            the eIDTime to set
+	 * @param eIDTime the eIDTime to set
 	 */
 	public void setEIDTime(Date eIDTime) {
 		EIDTime = eIDTime;
@@ -1814,8 +1701,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param cPSMSFlag
-	 *            the cPSMSFlag to set
+	 * @param cPSMSFlag the cPSMSFlag to set
 	 */
 	public void setCPSMSFlag(Boolean cPSMSFlag) {
 		CPSMSFlag = cPSMSFlag;
@@ -1829,8 +1715,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param jSYBeneficiary
-	 *            the jSYBeneficiary to set
+	 * @param jSYBeneficiary the jSYBeneficiary to set
 	 */
 	public void setJSYBeneficiary(Character jSYBeneficiary) {
 		JSYBeneficiary = jSYBeneficiary;
@@ -1844,8 +1729,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param jSYPaidDate
-	 *            the jSYPaidDate to set
+	 * @param jSYPaidDate the jSYPaidDate to set
 	 */
 	public void setJSYPaidDate(Date jSYPaidDate) {
 		JSYPaidDate = jSYPaidDate;
@@ -1859,8 +1743,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param bankName
-	 *            the bankName to set
+	 * @param bankName the bankName to set
 	 */
 	public void setBankName(String bankName) {
 		BankName = bankName;
@@ -1874,8 +1757,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param bankBranchName
-	 *            the bankBranchName to set
+	 * @param bankBranchName the bankBranchName to set
 	 */
 	public void setBankBranchName(String bankBranchName) {
 		BankBranchName = bankBranchName;
@@ -1889,8 +1771,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param accNo
-	 *            the accNo to set
+	 * @param accNo the accNo to set
 	 */
 	public void setAccNo(String accNo) {
 		AccNo = accNo;
@@ -1904,8 +1785,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param iFSCCode
-	 *            the iFSCCode to set
+	 * @param iFSCCode the iFSCCode to set
 	 */
 	public void setIFSCCode(String iFSCCode) {
 		IFSCCode = iFSCCode;
@@ -1919,8 +1799,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param remarks
-	 *            the remarks to set
+	 * @param remarks the remarks to set
 	 */
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
@@ -1934,8 +1813,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param referredByTelecaller
-	 *            the referredByTelecaller to set
+	 * @param referredByTelecaller the referredByTelecaller to set
 	 */
 	public void setReferredByTelecaller(Boolean referredByTelecaller) {
 		ReferredByTelecaller = referredByTelecaller;
@@ -1949,8 +1827,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param referredDate
-	 *            the referredDate to set
+	 * @param referredDate the referredDate to set
 	 */
 	public void setReferredDate(Date referredDate) {
 		ReferredDate = referredDate;
@@ -1964,8 +1841,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param noofTry
-	 *            the noofTry to set
+	 * @param noofTry the noofTry to set
 	 */
 	public void setNoofTry(Long noofTry) {
 		NoofTry = noofTry;
@@ -1979,8 +1855,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param callAnswered
-	 *            the callAnswered to set
+	 * @param callAnswered the callAnswered to set
 	 */
 	public void setCallAnswered(Boolean callAnswered) {
 		CallAnswered = callAnswered;
@@ -1994,8 +1869,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param status
-	 *            the status to set
+	 * @param status the status to set
 	 */
 	public void setStatus(String status) {
 		this.status = status;
@@ -2009,8 +1883,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param highRisk
-	 *            the highRisk to set
+	 * @param highRisk the highRisk to set
 	 */
 	public void setHighRisk(Boolean highRisk) {
 		this.highRisk = highRisk;
@@ -2024,8 +1897,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param callVerified
-	 *            the callVerified to set
+	 * @param callVerified the callVerified to set
 	 */
 	public void setCallVerified(Boolean callVerified) {
 		CallVerified = callVerified;
@@ -2039,8 +1911,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param associate
-	 *            the associate to set
+	 * @param associate the associate to set
 	 */
 	public void setAssociate(String associate) {
 		this.associate = associate;
@@ -2054,8 +1925,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param callDate
-	 *            the callDate to set
+	 * @param callDate the callDate to set
 	 */
 	public void setCallDate(Date callDate) {
 		CallDate = callDate;
@@ -2069,8 +1939,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param dueServices
-	 *            the dueServices to set
+	 * @param dueServices the dueServices to set
 	 */
 	public void setDueServices(String dueServices) {
 		DueServices = dueServices;
@@ -2084,8 +1953,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param dueServicesResponse
-	 *            the dueServicesResponse to set
+	 * @param dueServicesResponse the dueServicesResponse to set
 	 */
 	public void setDueServicesResponse(String dueServicesResponse) {
 		DueServicesResponse = dueServicesResponse;
@@ -2099,8 +1967,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param overdueServices
-	 *            the overdueServices to set
+	 * @param overdueServices the overdueServices to set
 	 */
 	public void setOverdueServices(String overdueServices) {
 		OverdueServices = overdueServices;
@@ -2114,8 +1981,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param overdueServicesResponse
-	 *            the overdueServicesResponse to set
+	 * @param overdueServicesResponse the overdueServicesResponse to set
 	 */
 	public void setOverdueServicesResponse(String overdueServicesResponse) {
 		OverdueServicesResponse = overdueServicesResponse;
@@ -2129,8 +1995,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param givenServices
-	 *            the givenServices to set
+	 * @param givenServices the givenServices to set
 	 */
 	public void setGivenServices(String givenServices) {
 		GivenServices = givenServices;
@@ -2144,8 +2009,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param givenServicesResponse
-	 *            the givenServicesResponse to set
+	 * @param givenServicesResponse the givenServicesResponse to set
 	 */
 	public void setGivenServicesResponse(String givenServicesResponse) {
 		GivenServicesResponse = givenServicesResponse;
@@ -2159,8 +2023,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param miscarriage
-	 *            the miscarriage to set
+	 * @param miscarriage the miscarriage to set
 	 */
 	public void setMiscarriage(Boolean miscarriage) {
 		this.miscarriage = miscarriage;
@@ -2174,8 +2037,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param babyDied
-	 *            the babyDied to set
+	 * @param babyDied the babyDied to set
 	 */
 	public void setBabyDied(Boolean babyDied) {
 		BabyDied = babyDied;
@@ -2189,8 +2051,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param callNo
-	 *            the callNo to set
+	 * @param callNo the callNo to set
 	 */
 	public void setCallNo(String callNo) {
 		CallNo = callNo;
@@ -2204,8 +2065,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param questionsAsked
-	 *            the questionsAsked to set
+	 * @param questionsAsked the questionsAsked to set
 	 */
 	public void setQuestionsAsked(String questionsAsked) {
 		QuestionsAsked = questionsAsked;
@@ -2219,8 +2079,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param asnwerGivenByBenificary
-	 *            the asnwerGivenByBenificary to set
+	 * @param asnwerGivenByBenificary the asnwerGivenByBenificary to set
 	 */
 	public void setAsnwerGivenByBenificary(String asnwerGivenByBenificary) {
 		AsnwerGivenByBenificary = asnwerGivenByBenificary;
@@ -2234,8 +2093,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param source
-	 *            the source to set
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
@@ -2249,8 +2107,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param noCallReason
-	 *            the noCallReason to set
+	 * @param noCallReason the noCallReason to set
 	 */
 	public void setNoCallReason(String noCallReason) {
 		NoCallReason = noCallReason;
@@ -2264,8 +2121,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param noPhoneReason
-	 *            the noPhoneReason to set
+	 * @param noPhoneReason the noPhoneReason to set
 	 */
 	public void setNoPhoneReason(String noPhoneReason) {
 		NoPhoneReason = noPhoneReason;
@@ -2279,8 +2135,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		CreatedBy = createdBy;
@@ -2294,8 +2149,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param updatedBy
-	 *            the updatedBy to set
+	 * @param updatedBy the updatedBy to set
 	 */
 	public void setUpdatedBy(String updatedBy) {
 		UpdatedBy = updatedBy;
@@ -2309,8 +2163,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param bPLAPL
-	 *            the bPLAPL to set
+	 * @param bPLAPL the bPLAPL to set
 	 */
 	public void setBPLAPL(String bPLAPL) {
 		BPLAPL = bPLAPL;
@@ -2324,8 +2177,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param mDDSStateID
-	 *            the mDDSStateID to set
+	 * @param mDDSStateID the mDDSStateID to set
 	 */
 	public void setMDDSStateID(String mDDSStateID) {
 		MDDSStateID = mDDSStateID;
@@ -2339,8 +2191,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param mDDSDistrictID
-	 *            the mDDSDistrictID to set
+	 * @param mDDSDistrictID the mDDSDistrictID to set
 	 */
 	public void setMDDSDistrictID(String mDDSDistrictID) {
 		MDDSDistrictID = mDDSDistrictID;
@@ -2354,8 +2205,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param mDDSTalukaID
-	 *            the mDDSTalukaID to set
+	 * @param mDDSTalukaID the mDDSTalukaID to set
 	 */
 	public void setMDDSTalukaID(String mDDSTalukaID) {
 		MDDSTalukaID = mDDSTalukaID;
@@ -2369,8 +2219,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param mDDSVillageID
-	 *            the mDDSVillageID to set
+	 * @param mDDSVillageID the mDDSVillageID to set
 	 */
 	public void setMDDSVillageID(String mDDSVillageID) {
 		MDDSVillageID = mDDSVillageID;
@@ -2384,8 +2233,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param isValid
-	 *            the isValid to set
+	 * @param isValid the isValid to set
 	 */
 	public void setIsValid(Boolean isValid) {
 		IsValid = isValid;
@@ -2399,8 +2247,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param isError
-	 *            the isError to set
+	 * @param isError the isError to set
 	 */
 	public void setIsError(Boolean isError) {
 		IsError = isError;
@@ -2414,8 +2261,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param errorReason
-	 *            the errorReason to set
+	 * @param errorReason the errorReason to set
 	 */
 	public void setErrorReason(String errorReason) {
 		ErrorReason = errorReason;
@@ -2429,8 +2275,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param fileID
-	 *            the fileID to set
+	 * @param fileID the fileID to set
 	 */
 	public void setFileID(Long fileID) {
 		this.fileID = fileID;
@@ -2444,8 +2289,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param deleted
-	 *            the deleted to set
+	 * @param deleted the deleted to set
 	 */
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
@@ -2459,8 +2303,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param createdby
-	 *            the createdby to set
+	 * @param createdby the createdby to set
 	 */
 	public void setCreatedby(String createdby) {
 		this.createdby = createdby;
@@ -2474,8 +2317,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param createdDate
-	 *            the createdDate to set
+	 * @param createdDate the createdDate to set
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
@@ -2489,8 +2331,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param modifiedBy the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -2504,8 +2345,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param lastModDate
-	 *            the lastModDate to set
+	 * @param lastModDate the lastModDate to set
 	 */
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
@@ -2519,8 +2359,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param isAllocated
-	 *            the isAllocated to set
+	 * @param isAllocated the isAllocated to set
 	 */
 	public void setIsAllocated(Boolean isAllocated) {
 		this.isAllocated = isAllocated;
@@ -2534,8 +2373,7 @@ public class MotherValidRecordDetail implements Serializable {
 	}
 
 	/**
-	 * @param outputMapper
-	 *            the outputMapper to set
+	 * @param outputMapper the outputMapper to set
 	 */
 	public void setOutputMapper(OutputMapper outputMapper) {
 		this.outputMapper = outputMapper;
@@ -2544,17 +2382,10 @@ public class MotherValidRecordDetail implements Serializable {
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 
-		// return builder.create().toJson(this);
 		return outputMapper.gson().toJson(this);
-		// return new Gson().toJson(this);
 	}
 
 	/**

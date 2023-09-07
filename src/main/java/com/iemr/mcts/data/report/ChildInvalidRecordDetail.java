@@ -156,8 +156,7 @@ public class ChildInvalidRecordDetail implements Serializable{
 	@Expose
 	private String Village_Name;
 	 
-//	@Expose
-//	private String GP_Village;
+
 	 
 	@Expose
 	private String Address;
@@ -363,7 +362,6 @@ public class ChildInvalidRecordDetail implements Serializable{
 	private Long Mid_NO;
 	 
 	@Expose
-	//private Boolean Duplicate_Boolean;
 	private Boolean Duplicate_Bit;
 	 
 	@Expose

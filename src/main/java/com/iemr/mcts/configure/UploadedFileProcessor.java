@@ -24,7 +24,6 @@ package com.iemr.mcts.configure;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -69,14 +68,13 @@ import com.iemr.mcts.data.supervisor.MctsDataReaderDetail;
 import com.iemr.mcts.utils.exception.IEMRException;
 import com.iemr.mcts.utils.mapper.InputMapper;
 
-
 public class UploadedFileProcessor {
 
 	TikaConfig config;
 	Detector detector;
 	TikaInputStream stream;
 	Metadata metadata;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	private static InputMapper inputMapper = new InputMapper();
@@ -93,8 +91,7 @@ public class UploadedFileProcessor {
 	}
 
 	/**
-	 * this is to determine the content type of the file based on the file
-	 * headers
+	 * this is to determine the content type of the file based on the file headers
 	 * 
 	 * @param inputStream
 	 * @param fileName
@@ -102,7 +99,7 @@ public class UploadedFileProcessor {
 	 * @throws TikaException
 	 * @throws IOException
 	 */
-	public String detectFileType(byte [] byteArray) throws TikaException, IOException {
+	public String detectFileType(byte[] byteArray) throws TikaException, IOException {
 
 		Tika tika = new Tika();
 		String detectedType = tika.detect(byteArray);
@@ -116,10 +113,10 @@ public class UploadedFileProcessor {
 	 * @return file checksum
 	 * @throws Exception
 	 */
-	public String getMD5Checksum(byte [] byteArray) throws IOException {
+	public String getMD5Checksum(byte[] byteArray) throws IOException {
 
 		byte[] digest = null;
-		
+
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
 			digest = md5.digest(byteArray);
@@ -147,12 +144,8 @@ public class UploadedFileProcessor {
 
 		List<MctsDataReaderDetail> dataReaderDetails = new ArrayList<MctsDataReaderDetail>();
 
-		// Workbook dataWorkbook = new XSSFWorkbook(inputStream);
-		// XSSFSheet dataSheet = dataWorkbook.getSheetAt(0);
 		String fileName = file.getName();
 		File convFile = new File(fileName);
-		// file.transferTo(convFile);
-		// convFile.createNewFile();
 		FileUtils.writeByteArrayToFile(convFile, file.getBytes());
 		FileInputStream fileInputStream = null;
 
@@ -180,8 +173,8 @@ public class UploadedFileProcessor {
 			}
 
 		} finally {
-			if(fileInputStream != null)
-			   fileInputStream.close();
+			if (fileInputStream != null)
+				fileInputStream.close();
 		}
 
 		return dataReaderDetails;
@@ -204,14 +197,9 @@ public class UploadedFileProcessor {
 
 		List<ChildValidDataHandler> childDataHandlers = new ArrayList<ChildValidDataHandler>();
 
-		// Workbook dataWorkbook = new XSSFWorkbook(inputStream);
-		// XSSFSheet dataSheet = dataWorkbook.getSheetAt(0);
 		String fileName = file.getName();
 		File convFile = new File(fileName);
-		// file.transferTo(convFile);
-		// convFile.createNewFile();
 		FileUtils.writeByteArrayToFile(convFile, file.getBytes());
-		// FileUtils.readLines(convFile);
 		FileInputStream fileInputStream = null;
 
 		try {
@@ -219,7 +207,6 @@ public class UploadedFileProcessor {
 
 			XSSFWorkbook workbook = this.getXSSFWorkbook(fileInputStream);
 			Sheet datatypeSheet = workbook.getSheetAt(0);
-			// Sheet datatypeSheet = new XSSFSheet();
 			FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 			Iterator<Row> rowIterator = datatypeSheet.iterator();
 
@@ -239,8 +226,8 @@ public class UploadedFileProcessor {
 			}
 
 		} finally {
-			if(fileInputStream != null)
-			fileInputStream.close();
+			if (fileInputStream != null)
+				fileInputStream.close();
 		}
 
 		return childDataHandlers;
@@ -250,8 +237,7 @@ public class UploadedFileProcessor {
 	 * to read mcts data object from each row
 	 * 
 	 * @param row
-	 * @param Xls
-	 *            sheet headers
+	 * @param Xls sheet headers
 	 * @return
 	 */
 	public List<String> getHeadersAsList(Row row) {
@@ -276,7 +262,6 @@ public class UploadedFileProcessor {
 	public JSONObject getDataObjectMap(Row row, Map<String, String> fieldsMap, FormulaEvaluator evaluator)
 			throws DateFormatNotMatchException {
 
-		// Map<String, String> objectMap = new HashMap<String, String>();
 		JSONObject object = new JSONObject();
 
 		String dateFormats[] = { "dd-MM-yyyy", "dd/MM/yyyy", "dd-MMM-yy" };

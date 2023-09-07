@@ -22,44 +22,34 @@
 package com.iemr.mcts.data.report;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.mcts.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "m_providerservicemapping")
 public class ProviderServiceMapping {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
-	
-	
 
 	@Expose
 	@Column(name = "ServiceProviderID")
 	private Short serviceProviderID;
-
-	
-
-	
 
 	@Expose
 	@Column(name = "CountryID")
@@ -71,7 +61,6 @@ public class ProviderServiceMapping {
 	@Column(name = "DistrictID")
 	private Integer districtID;
 
-	
 	@Expose
 	@Column(name = "CityID")
 	private Integer cityID;
@@ -108,40 +97,28 @@ public class ProviderServiceMapping {
 	@Expose
 	@Column(name = "APIMANClientID")
 	private String aPIMANClientID;
-	
+
 	@Expose
 	@Column(name = "APIMANClientKey")
 	private String aPIMANClientKey;
-	
-	
-	public Integer getProviderServiceMapID()
-	{
+
+	public Integer getProviderServiceMapID() {
 		return providerServiceMapID;
 	}
 
-	// public ServiceMaster getM_ServiceMaster()
-	// {
-	// return m_ServiceMaster;
-	// }
-
-	public String getCtiCampaignName()
-	{
+	public String getCtiCampaignName() {
 		return ctiCampaignName;
 	}
 
-	public Integer getStateID()
-	{
+	public Integer getStateID() {
 		return stateID;
 	}
-	
-	
 
 	@Transient
 	OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
 
@@ -153,14 +130,12 @@ public class ProviderServiceMapping {
 	@Column(name = "PreviewWindowTime")
 	private Integer previewWindowTime;
 
-	public ProviderServiceMapping(Boolean isDialPreferenceManual, Integer previewWindowTime)
-	{
+	public ProviderServiceMapping(Boolean isDialPreferenceManual, Integer previewWindowTime) {
 		this.isDialPreferenceManual = isDialPreferenceManual;
 		this.previewWindowTime = previewWindowTime;
 	}
 
-	public ProviderServiceMapping()
-	{
+	public ProviderServiceMapping() {
 	}
 
 }

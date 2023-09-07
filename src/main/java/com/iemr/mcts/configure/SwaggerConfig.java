@@ -37,13 +37,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	@Bean
-	public Docket productApi()
-	{
+	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any()).build().apiInfo(metaData());
 	}
-	private ApiInfo metaData()
-	{
+
+	private ApiInfo metaData() {
 		ApiInfoBuilder builder = new ApiInfoBuilder();
 		builder.contact(new Contact("Wipro HCIT", "https://www.wipro.com", "mywipro@wipro.com"));
 		builder.description("MCTS APIs for AMRIT");
@@ -51,15 +50,5 @@ public class SwaggerConfig {
 		builder.title("MCTS APIs for AMRIT");
 		return builder.build();
 	}
-//    private ApiInfo metaData() {
-//        ApiInfo apiInfo = new ApiInfo(
-//                "Spring Boot REST API",
-//                "Spring Boot REST API for Online Store",
-//                "1.0",
-//                "Terms of service",
-//                new Contact("Wipro HCIT", "https://www.wipro.com", "mywipro@wipro.com"),
-//                "",
-//                "");
-//        return apiInfo;
-//    }
+
 }

@@ -43,8 +43,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import com.iemr.mcts.utils.config.ConfigProperties;
 
 @Configuration
-public class QuartzConfig
-{
+public class QuartzConfig {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -55,17 +54,14 @@ public class QuartzConfig
 	private ApplicationContext applicationContext;
 
 	@PostConstruct
-	public void init()
-	{
+	public void init() {
 		log.debug("QuartzConfig initialized.");
 	}
 
 	@Bean
-	public SchedulerFactoryBean quartzScheduler()
-	{
+	public SchedulerFactoryBean quartzScheduler() {
 		SchedulerFactoryBean quartzScheduler = new SchedulerFactoryBean();
 
-		// quartzScheduler.setso;
 		quartzScheduler.setTransactionManager(transactionManager);
 		quartzScheduler.setOverwriteExistingJobs(true);
 		quartzScheduler.setSchedulerName("jelies-quartz-scheduler");
@@ -77,7 +73,7 @@ public class QuartzConfig
 
 		quartzScheduler.setQuartzProperties(quartzProperties());
 
-		Trigger[] triggers = {processMQTriggerForSMS().getObject() };
+		Trigger[] triggers = { processMQTriggerForSMS().getObject() };
 
 		quartzScheduler.setTriggers(triggers);
 
@@ -85,8 +81,7 @@ public class QuartzConfig
 	}
 
 	@Bean
-	public JobDetailFactoryBean processMQJobForSMS()
-	{
+	public JobDetailFactoryBean processMQJobForSMS() {
 		JobDetailFactoryBean jobDetailFactory;
 		jobDetailFactory = new JobDetailFactoryBean();
 		jobDetailFactory.setJobClass(ScheduleJobServiceForSMS.class);
@@ -95,15 +90,13 @@ public class QuartzConfig
 	}
 
 	@Bean
-	public CronTriggerFactoryBean processMQTriggerForSMS()
-	{
+	public CronTriggerFactoryBean processMQTriggerForSMS() {
 		log.debug("SMS Scheduler Start");
-		
+
 		Boolean startJob = ConfigProperties.getBoolean("start-sms-scheduler");
 		CronTriggerFactoryBean cronTriggerFactoryBean = null;
 		String scheduleConfig = "1 0 0 * * ?";
-		if (startJob)
-		{
+		if (startJob) {
 			scheduleConfig = ConfigProperties.getPropertyByName("cron-scheduler-sms");
 		}
 		cronTriggerFactoryBean = new CronTriggerFactoryBean();
@@ -111,25 +104,22 @@ public class QuartzConfig
 
 		cronTriggerFactoryBean.setCronExpression(scheduleConfig);
 		cronTriggerFactoryBean.setGroup("spring-quartz");
-		
+
 		log.debug("SMS Scheduler End");
-		
+
 		return cronTriggerFactoryBean;
 	}
 
 	@Bean
-	public Properties quartzProperties()
-	{
+	public Properties quartzProperties() {
 		PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
 		propertiesFactoryBean.setLocation(new ClassPathResource("/application.properties"));
 		Properties properties = null;
-		try
-		{
+		try {
 			propertiesFactoryBean.afterPropertiesSet();
 			properties = propertiesFactoryBean.getObject();
 
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			log.warn("Cannot load application.properties.");
 		}
 
