@@ -22,10 +22,6 @@
 package com.iemr.mcts.data.report;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Map;
-
-import javax.persistence.Transient;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.LongSerializationPolicy;

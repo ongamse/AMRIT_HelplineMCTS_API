@@ -22,24 +22,17 @@
 package com.iemr.mcts.data.report;
 
 import java.sql.Timestamp;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.google.gson.annotations.Expose;
 import com.iemr.mcts.utils.mapper.OutputMapper;
-
-import lombok.Data;
 
 @Entity
 @Table(name = "m_district")
@@ -50,15 +43,15 @@ public class Districts {
 	@Column(name = "DistrictID")
 	@Expose
 	private Integer districtID;
-	
+
 	@Expose
 	@Column(name = "StateID")
 	private Integer stateID;
-	
+
 	@Expose
 	@Column(name = "DistrictName")
 	private String districts;
-	
+
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	@Expose
 	private Boolean deleted;
@@ -71,12 +64,11 @@ public class Districts {
 	private String modifiedBy;
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
-	
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
-	public Districts()
-	{
+	public Districts() {
 	}
 
 	public Integer getDistrictID() {
@@ -95,8 +87,6 @@ public class Districts {
 		this.stateID = stateID;
 	}
 
-    
-	
 	public String getDistrict() {
 		return districts;
 	}
@@ -152,6 +142,5 @@ public class Districts {
 	public void setOutputMapper(OutputMapper outputMapper) {
 		this.outputMapper = outputMapper;
 	}
-	
-}
 
+}

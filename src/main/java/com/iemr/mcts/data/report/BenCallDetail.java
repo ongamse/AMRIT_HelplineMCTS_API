@@ -22,7 +22,6 @@
 package com.iemr.mcts.data.report;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
@@ -39,8 +38,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.LongSerializationPolicy;
 import com.google.gson.annotations.Expose;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 

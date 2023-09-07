@@ -47,14 +47,14 @@ public class BenPhoneMap {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "benificiaryRegID")
 	private I_Beneficiary i_beneficiary;
-	
+
 	@Expose
 	@Column(name = "ParentBenRegID")
 	private Long parentBenRegID;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "parentBenRegID")
 	private I_Beneficiary i_parentBeneficiary;
-	
+
 	@Expose
 	@Column(name = "BenRelationshipID")
 	private Short benRelationshipID;
@@ -71,14 +71,11 @@ public class BenPhoneMap {
 	@Column(name = "ModifiedBy")
 	private String modifiedBy;
 	@Column(name = "NuisanceCallCount")
-	// @Expose
 	private Integer nuisanceCallCount = 0;
 
 	public BenPhoneMap() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 
 	/**
 	 * @return the benPhMapID
@@ -87,14 +84,12 @@ public class BenPhoneMap {
 		return benPhMapID;
 	}
 
-
 	/**
 	 * @param benPhMapID the benPhMapID to set
 	 */
 	public void setBenPhMapID(Long benPhMapID) {
 		this.benPhMapID = benPhMapID;
 	}
-
 
 	/**
 	 * @return the benificiaryRegID
@@ -103,14 +98,12 @@ public class BenPhoneMap {
 		return benificiaryRegID;
 	}
 
-
 	/**
 	 * @param benificiaryRegID the benificiaryRegID to set
 	 */
 	public void setBenificiaryRegID(Long benificiaryRegID) {
 		this.benificiaryRegID = benificiaryRegID;
 	}
-
 
 	/**
 	 * @return the i_beneficiary
@@ -119,14 +112,12 @@ public class BenPhoneMap {
 		return i_beneficiary;
 	}
 
-
 	/**
 	 * @param i_beneficiary the i_beneficiary to set
 	 */
 	public void setI_beneficiary(I_Beneficiary i_beneficiary) {
 		this.i_beneficiary = i_beneficiary;
 	}
-
 
 	/**
 	 * @return the parentBenRegID
@@ -135,14 +126,12 @@ public class BenPhoneMap {
 		return parentBenRegID;
 	}
 
-
 	/**
 	 * @param parentBenRegID the parentBenRegID to set
 	 */
 	public void setParentBenRegID(Long parentBenRegID) {
 		this.parentBenRegID = parentBenRegID;
 	}
-
 
 	/**
 	 * @return the i_parentBeneficiary
@@ -151,14 +140,12 @@ public class BenPhoneMap {
 		return i_parentBeneficiary;
 	}
 
-
 	/**
 	 * @param i_parentBeneficiary the i_parentBeneficiary to set
 	 */
 	public void setI_parentBeneficiary(I_Beneficiary i_parentBeneficiary) {
 		this.i_parentBeneficiary = i_parentBeneficiary;
 	}
-
 
 	/**
 	 * @return the benRelationshipID
@@ -167,14 +154,12 @@ public class BenPhoneMap {
 		return benRelationshipID;
 	}
 
-
 	/**
 	 * @param benRelationshipID the benRelationshipID to set
 	 */
 	public void setBenRelationshipID(Short benRelationshipID) {
 		this.benRelationshipID = benRelationshipID;
 	}
-
 
 	/**
 	 * @return the phoneNo
@@ -183,14 +168,12 @@ public class BenPhoneMap {
 		return phoneNo;
 	}
 
-
 	/**
 	 * @param phoneNo the phoneNo to set
 	 */
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-
 
 	/**
 	 * @return the phoneTypeID
@@ -199,14 +182,12 @@ public class BenPhoneMap {
 		return phoneTypeID;
 	}
 
-
 	/**
 	 * @param phoneTypeID the phoneTypeID to set
 	 */
 	public void setPhoneTypeID(Short phoneTypeID) {
 		this.phoneTypeID = phoneTypeID;
 	}
-
 
 	/**
 	 * @return the deleted
@@ -215,14 +196,12 @@ public class BenPhoneMap {
 		return deleted;
 	}
 
-
 	/**
 	 * @param deleted the deleted to set
 	 */
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-
 
 	/**
 	 * @return the createdBy
@@ -231,14 +210,12 @@ public class BenPhoneMap {
 		return createdBy;
 	}
 
-
 	/**
 	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
 
 	/**
 	 * @return the modifiedBy
@@ -247,14 +224,12 @@ public class BenPhoneMap {
 		return modifiedBy;
 	}
 
-
 	/**
 	 * @param modifiedBy the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-
 
 	/**
 	 * @return the nuisanceCallCount
@@ -263,7 +238,6 @@ public class BenPhoneMap {
 		return nuisanceCallCount;
 	}
 
-
 	/**
 	 * @param nuisanceCallCount the nuisanceCallCount to set
 	 */
@@ -271,10 +245,6 @@ public class BenPhoneMap {
 		this.nuisanceCallCount = nuisanceCallCount;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return OutputMapper.gson().toJson(this);

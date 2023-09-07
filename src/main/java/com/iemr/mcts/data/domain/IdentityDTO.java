@@ -29,11 +29,11 @@ import lombok.Data;
 @Data
 public class IdentityDTO {
 
-	private String eventTypeName; // created, reserved, registered, modified, deleted
+	private String eventTypeName;
 	private Timestamp eventTypeDate;
 	private Integer agentId;
 	private String agentName;
-	private Integer agentPSMapId; // ProviderServiceMapId
+	private Integer agentPSMapId;
 	private String agentComment;
 	private Integer serviceId;
 	private String serviceName;
@@ -43,13 +43,12 @@ public class IdentityDTO {
 	private String stateName;
 	private Integer providerServiceMapId;
 
-	// details
 	private Integer areaId;
 	private Integer beneficiaryId;
 	private Integer beneficiaryRegId;
 	private Integer communityId;
 	private String community;
-	private Timestamp dob; //int age
+	private Timestamp dob;
 	private Integer age;
 	private Timestamp marriageDate;
 	private Integer ageAtMarriage;
@@ -105,13 +104,9 @@ public class IdentityDTO {
 
 	// family tagging
 	List<BenFamilyDTO> benFamilyDTOs;
-	// private Boolean isEmergencyContact;
-	// private String relationshipToSelf;
-	// private BigInteger associatedBenRegId;
 
 	// identities
 	private List<Identity> identities;
-	
 
 	private Integer sexualOrientationID;
 	private String sexualOrientationType;

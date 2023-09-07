@@ -127,7 +127,7 @@ public class CallConfigurationController {
 			response.setError(e);
 		}
 
-		return response.toString(); // response.toString();
+		return response.toString();
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class CallConfigurationController {
 			response.setError(e);
 		}
 
-		return response.toString(); // response.toString();
+		return response.toString();
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class CallConfigurationController {
 			response.setError(e);
 		}
 
-		return response.toString(); // response.toString();
+		return response.toString();
 	}
 
 	/**

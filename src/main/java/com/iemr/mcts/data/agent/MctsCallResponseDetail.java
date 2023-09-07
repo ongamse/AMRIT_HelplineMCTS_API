@@ -34,7 +34,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.mcts.data.supervisor.MctsQAMappingDetail;
 import com.iemr.mcts.data.supervisor.QuestionnaireDetail;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 
@@ -55,10 +54,6 @@ public class MctsCallResponseDetail {
 	@Expose
 	@Column(name = "ChildID")
 	private Long childID;
-
-//	@Expose
-//	@Column(name = "CallDetailID", insertable = true, updatable = false)
-//	private Long callDetailID;
 
 	@Expose
 	@Column(name = "BenCallID", insertable = true, updatable = false)
@@ -99,7 +94,7 @@ public class MctsCallResponseDetail {
 	@Expose
 	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
+
 	@Expose
 	@Column(name = "outboundCallType")
 	private String outboundCallType;
@@ -119,8 +114,6 @@ public class MctsCallResponseDetail {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BenCallID", insertable = false, updatable = false)
 	private MctsOutboundCallDetail mctsOutboundCallDetail;
-
-	
 
 	private static OutputMapper outputMapper = new OutputMapper();
 
@@ -222,25 +215,6 @@ public class MctsCallResponseDetail {
 		this.questionID = questionID;
 	}
 
-//	/**
-//	 * @return the benCallID
-//	 */
-//	public Long getBenCallID() {
-//		return benCallID;
-//	}
-//
-//	/**
-//	 * @param benCallID the benCallID to set
-//	 */
-//	public void setBenCallID(Long benCallID) {
-//		this.benCallID = benCallID;
-//	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
@@ -253,7 +227,5 @@ public class MctsCallResponseDetail {
 	public void setOutboundCallType(String outboundCallType) {
 		this.outboundCallType = outboundCallType;
 	}
-
-	
 
 }
