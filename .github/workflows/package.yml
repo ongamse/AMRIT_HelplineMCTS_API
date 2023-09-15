@@ -11,7 +11,6 @@ on:
      paths-ignore:
      - target/**
      
-
 env:
   ENV_VAR: test
 
@@ -38,5 +37,5 @@ jobs:
     - name: Upload WAR file as artifact
       uses: actions/upload-artifact@v2 
       with:
-        name: HWC-API
-        path: target/hwc-facility-service.war
+        name: HelplineMCTS-API
+        path: target/mctsapi-v1.0.war 
