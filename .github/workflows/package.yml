@@ -5,12 +5,12 @@ on:
     branches: [ "develop"]
     paths-ignore:
      - target/**
-     - dist/**
+     
   pull_request:
      branches: [ "develop" ]
      paths-ignore:
      - target/**
-     - dist/**
+     
 
 env:
   ENV_VAR: test
