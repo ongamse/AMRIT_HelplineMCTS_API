@@ -1,7 +1,27 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.supervisor;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,91 +32,85 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 
 @Entity
-@Table(name="m_MctsQAMapping")
+@Table(name = "m_MctsQAMapping")
 public class MctsQAMappingDetail {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "MctsQAMapID")
 	private Long mctsQAMapID;
-	
+
 	@Expose
-	@Column(name="QuestionID", insertable = true, updatable = false)
+	@Column(name = "QuestionID", insertable = true, updatable = false)
 	private Integer questionID;
-	
+
 	@Expose
 	@Column(name = "Interaction")
 	private String interaction;
-	
+
 	@Expose
-	@Column(name="VariableName")
+	@Column(name = "VariableName")
 	private String variableName;
-	
+
 	@Expose
-	@Column(name="VariableDataType")
+	@Column(name = "VariableDataType")
 	private String variableDataType;
-	
+
 	@Expose
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Long providerServiceMapID;
 
 	@Expose
-	@Column(name="OutboundCallType")
+	@Column(name = "OutboundCallType")
 	private String outboundCallType;
-	
+
 	@Expose
-	@Column(name="EffectiveFrom")
+	@Column(name = "EffectiveFrom")
 	private Date effectiveFrom;
-	
+
 	@Expose
-	@Column(name="EffectiveUpto")
+	@Column(name = "EffectiveUpto")
 	private Date effectiveUpto;
-	
+
 	@Expose
 	@Column(name = "Deleted", insertable = true, updatable = true)
 	private boolean deleted;
-	
+
 	@Expose
-	@Column(name="Processed", insertable = false, updatable = true)
+	@Column(name = "Processed", insertable = false, updatable = true)
 	private String processed;
-	
+
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	
+
 	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	
+
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	
+
 	@Expose
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "questionID", insertable = false, updatable = false)
 	private QuestionnaireDetail questionnaireDetail;
-	
-//	@Expose
-//	@OneToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "questionID", insertable = false, updatable = false)
-//	private MctsQuestionValues mctsQuestionValues ;
-		
+
 	@Expose
-	@Column(name="DisplayOBCallType")
+	@Column(name = "DisplayOBCallType")
 	private String displayOBCallType;
-	
+
 	/**
 	 * Default Constructor
 	 */
@@ -111,14 +125,12 @@ public class MctsQAMappingDetail {
 		return questionID;
 	}
 
-
 	/**
 	 * @param questionID the questionID to set
 	 */
 	public void setQuestionID(Integer questionID) {
 		this.questionID = questionID;
 	}
-
 
 	/**
 	 * @return the outboundCallType
@@ -133,7 +145,7 @@ public class MctsQAMappingDetail {
 	public void setOutboundCallType(String outboundCallType) {
 		this.outboundCallType = outboundCallType;
 	}
-	
+
 	/**
 	 * @return the questionnaireDetail
 	 */
@@ -147,7 +159,7 @@ public class MctsQAMappingDetail {
 	public void setQuestionnaireDetail(QuestionnaireDetail questionnaireDetail) {
 		this.questionnaireDetail = questionnaireDetail;
 	}
-	
+
 	/**
 	 * @return the providerServiceMapID
 	 */
@@ -203,7 +215,7 @@ public class MctsQAMappingDetail {
 	public void setVariableDataType(String variableDataType) {
 		this.variableDataType = variableDataType;
 	}
-	
+
 	/**
 	 * @return the interaction
 	 */
@@ -234,12 +246,14 @@ public class MctsQAMappingDetail {
 
 	private static OutputMapper outputMapper = new OutputMapper();
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		
+
 		return outputMapper.gson().toJson(this);
 	}
 
@@ -257,11 +271,4 @@ public class MctsQAMappingDetail {
 		this.displayOBCallType = displayOBCallType;
 	}
 
-//	public MctsQuestionValues getMctsQuestionValues() {
-//		return mctsQuestionValues;
-//	}
-//
-//	public void setMctsQuestionValues(MctsQuestionValues mctsQuestionValues) {
-//		this.mctsQuestionValues = mctsQuestionValues;
-//	}
 }

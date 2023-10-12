@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.utils.http;
 
 import java.io.FileInputStream;
@@ -25,15 +46,10 @@ public class HttpUtils {
 	public static final String AUTHORIZATION = "Authorization";
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 	private String server;
-	// @Autowired
 	private RestTemplate rest;
-	// @Autowired
 	private HttpHeaders headers;
-	// @Autowired
 	private HttpStatus status;
 
-	// @Autowired(required = true)
-	// @Qualifier("hibernateCriteriaBuilder")
 	public HttpUtils() {
 		if (rest == null) {
 			rest = new RestTemplate();
@@ -41,29 +57,13 @@ public class HttpUtils {
 			headers.add("Content-Type", "application/json");
 		}
 	}
-	// public HttpUtils() {
-	// if (rest == null) {
-	// rest = new RestTemplate();
-	// headers = new HttpHeaders();
-	// headers.add("Content-Type", "application/json");
-	// }
-	// }
-
-	// @Bean
-	// public HttpUtils httpUtils() {
-	// return new HttpUtils();
-	// }
 
 	public String get(String uri) {
 		String body;
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
 		setStatus(responseEntity.getStatusCode());
-		// if (status == HttpStatus.OK){
 		body = responseEntity.getBody();
-		// }else{
-		// responseEntity
-		// }
 		return body;
 	}
 
@@ -139,12 +139,10 @@ public class HttpUtils {
 				responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
 			} catch (FileNotFoundException e) {
 				logger.error(e.getMessage());
-			}
-			finally
-			{
-				if(multiPart!=null)
+			} finally {
+				if (multiPart != null)
 					multiPart.close();
-			}	
+			}
 		} else {
 			HttpEntity<String> requestEntity;
 			requestEntity = new HttpEntity<String>(data, headers);

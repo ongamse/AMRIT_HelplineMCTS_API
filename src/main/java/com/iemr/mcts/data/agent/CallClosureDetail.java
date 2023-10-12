@@ -1,9 +1,28 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.agent;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-
-import javax.persistence.Column;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -14,84 +33,83 @@ public class CallClosureDetail {
 	@SerializedName("mctsOutboundCall")
 	@Expose
 	private MctsOutboundCall mctsOutboundCall;
-	
+
 	@SerializedName("isAnswered")
 	@Expose
 	private Boolean isAnswered;
-	
+
 	@SerializedName("noFurtherCallRequired")
 	@Expose
 	private Boolean noFurtherCallRequired;
-	
+
 	@SerializedName("callDetailID")
 	@Expose
 	private Long callDetailID;
-	
+
 	@SerializedName("reasonNoFurtherCallRequired")
 	@Expose
 	private String reasonNoFurtherCallRequired;
-	
+
 	@SerializedName("additionalCallRequired")
 	@Expose
 	private Boolean additionalCallRequired;
-	
+
 	@SerializedName("stickyAgentRequired")
 	@Expose
 	private Boolean stickyAgentRequired;
-	
+
 	@SerializedName("isTransfered")
 	@Expose
 	private Boolean isTransfered;
-	
+
 	@SerializedName("isTransferedTo104")
 	@Expose
 	private Boolean isTransferedTo104;
-	
-	
+
 	@SerializedName("isCompleted")
 	@Expose
 	private Boolean isCompleted;
-	
+
 	@SerializedName("prefferedCallDate")
 	@Expose
 	private Date prefferedCallDate;
-	
+
 	@SerializedName("providerServiceMapID")
 	@Expose
 	private Long providerServiceMapID;
-	
+
 	@SerializedName("userID")
 	@Expose
 	private Integer userID;
-	
+
 	@SerializedName("createdBy")
 	@Expose
 	private String createdBy;
-	
+
 	@SerializedName("remarks")
 	@Expose
 	private String remarks;
-	
+
 	@SerializedName("callType") /// need to comment
 	@Expose
 	private String callType;
-	
+
 	@SerializedName("callTypeID")
 	@Expose
 	private Integer callTypeID;
-	
+
 	@SerializedName("childCongenitalAnomaliesDetails")
 	@Expose
 	private ChildCongenitalAnomaliesDetail[] childCongenitalAnomaliesDetails;
-	
+
 	@SerializedName("isVerified")
 	@Expose
 	private Boolean isVerified;
-	
+
 	@Expose
 	@SerializedName("CallTime")
 	private Timestamp callTime;
-	
+
 	@Expose
 	@SerializedName("CallEndTime")
 	private Timestamp callEndTime;
@@ -101,7 +119,7 @@ public class CallClosureDetail {
 	 */
 	public MctsOutboundCall getMctsOutboundCall() {
 		return mctsOutboundCall;
-	}		
+	}
 
 	/**
 	 * @param mctsOutboundCall the mctsOutboundCall to set
@@ -272,7 +290,8 @@ public class CallClosureDetail {
 	}
 
 	/**
-	 * @param childCongenitalAnomaliesDetails the childCongenitalAnomaliesDetails to set
+	 * @param childCongenitalAnomaliesDetails the childCongenitalAnomaliesDetails to
+	 *                                        set
 	 */
 	public void setChildCongenitalAnomaliesDetails(ChildCongenitalAnomaliesDetail[] childCongenitalAnomaliesDetails) {
 		this.childCongenitalAnomaliesDetails = childCongenitalAnomaliesDetails;
@@ -389,5 +408,5 @@ public class CallClosureDetail {
 	public void setCallEndTime(Timestamp callEndTime) {
 		this.callEndTime = callEndTime;
 	}
-	
+
 }

@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.supervisor;
 
 import java.io.Serializable;
@@ -25,16 +46,6 @@ import com.iemr.mcts.utils.mapper.OutputMapper;
 @Entity
 @Table(name = "t_MCTSOutboundCalls")
 
-//@NamedStoredProcedureQueries({
-//		@NamedStoredProcedureQuery(name = "allocated-mother-records", procedureName = "PR_FetchMotherOutboundWorklist", parameters = {
-//				@StoredProcedureParameter(mode = ParameterMode.IN, name = "v_AllocatedUserID", type = Integer.class),
-//				@StoredProcedureParameter(mode = ParameterMode.OUT, name = "workList", type = MctsOutboundCall[].class) }),
-//
-//		@NamedStoredProcedureQuery(name = "allocated-child-records", procedureName = "PR_FetchChildOutboundWorklist", parameters = {
-//				@StoredProcedureParameter(mode = ParameterMode.IN, name = "v_AllocatedUserID", type = Integer.class),
-//				@StoredProcedureParameter(mode = ParameterMode.OUT, name = "workList", type = MctsOutboundCall[].class)
-//				}) 
-//	})
 public class MctsOutboundCall implements Serializable {
 
 	@Id
@@ -110,19 +121,19 @@ public class MctsOutboundCall implements Serializable {
 	@Expose
 	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
+
 	@Expose
 	@Transient
 	private Long callDetailID;
-	
+
 	@Expose
-	@Column(name="DisplayOBCallType")
+	@Column(name = "DisplayOBCallType")
 	private String displayOBCallType;
-	
+
 	@Expose
 	@Transient
 	private Timestamp lastCallTime;
-	
+
 	@Expose
 	@Transient
 	private String lastCallRemark;
@@ -156,7 +167,7 @@ public class MctsOutboundCall implements Serializable {
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "mctsOutboundCall")
 	private List<MctsOutboundCallDetail> mctsOutboundCallDeatils;
-	
+
 	@Expose
 	@Transient
 	private Integer vanID;
@@ -174,8 +185,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param obCallID
-	 *            the obCallID to set
+	 * @param obCallID the obCallID to set
 	 */
 	public void setObCallID(Long obCallID) {
 		this.obCallID = obCallID;
@@ -189,8 +199,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param childID
-	 *            the childID to set
+	 * @param childID the childID to set
 	 */
 	public void setChildID(Long childID) {
 		this.childID = childID;
@@ -204,8 +213,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param beneficiaryRegID
-	 *            the beneficiaryRegID to set
+	 * @param beneficiaryRegID the beneficiaryRegID to set
 	 */
 	public void setBeneficiaryRegID(Long beneficiaryRegID) {
 		this.beneficiaryRegID = beneficiaryRegID;
@@ -219,8 +227,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param allocatedUserID
-	 *            the allocatedUserID to set
+	 * @param allocatedUserID the allocatedUserID to set
 	 */
 	public void setAllocatedUserID(Integer allocatedUserID) {
 		this.allocatedUserID = allocatedUserID;
@@ -234,8 +241,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param providerServiceMapID
-	 *            the providerServiceMapID to set
+	 * @param providerServiceMapID the providerServiceMapID to set
 	 */
 	public void setProviderServiceMapID(Long providerServiceMapID) {
 		this.providerServiceMapID = providerServiceMapID;
@@ -249,8 +255,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param outboundCallType
-	 *            the outboundCallType to set
+	 * @param outboundCallType the outboundCallType to set
 	 */
 	public void setOutboundCallType(String outboundCallType) {
 		this.outboundCallType = outboundCallType;
@@ -264,8 +269,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param prefferedCallDate
-	 *            the prefferedCallDate to set
+	 * @param prefferedCallDate the prefferedCallDate to set
 	 */
 	public void setPrefferedCallDate(Date prefferedCallDate) {
 		this.prefferedCallDate = prefferedCallDate;
@@ -279,8 +283,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param callStatus
-	 *            the callStatus to set
+	 * @param callStatus the callStatus to set
 	 */
 	public void setCallStatus(String callStatus) {
 		this.callStatus = callStatus;
@@ -294,8 +297,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param noOfTrials
-	 *            the noOfTrials to set
+	 * @param noOfTrials the noOfTrials to set
 	 */
 	public void setNoOfTrials(Integer noOfTrials) {
 		this.noOfTrials = noOfTrials;
@@ -309,8 +311,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param deleted
-	 *            the deleted to set
+	 * @param deleted the deleted to set
 	 */
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
@@ -324,8 +325,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -339,8 +339,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param createdDate
-	 *            the createdDate to set
+	 * @param createdDate the createdDate to set
 	 */
 	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
@@ -354,8 +353,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param modifiedBy the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -369,8 +367,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param lastModDate
-	 *            the lastModDate to set
+	 * @param lastModDate the lastModDate to set
 	 */
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
@@ -384,8 +381,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param motherID
-	 *            the motherID to set
+	 * @param motherID the motherID to set
 	 */
 	public void setMotherID(Long motherID) {
 		this.motherID = motherID;
@@ -399,8 +395,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param callDateFrom
-	 *            the callDateFrom to set
+	 * @param callDateFrom the callDateFrom to set
 	 */
 	public void setCallDateFrom(Date callDateFrom) {
 		this.callDateFrom = callDateFrom;
@@ -414,8 +409,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param callDateTo
-	 *            the callDateTo to set
+	 * @param callDateTo the callDateTo to set
 	 */
 	public void setCallDateTo(Date callDateTo) {
 		this.callDateTo = callDateTo;
@@ -429,8 +423,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param allocationStatus
-	 *            the allocationStatus to set
+	 * @param allocationStatus the allocationStatus to set
 	 */
 	public void setAllocationStatus(String allocationStatus) {
 		this.allocationStatus = allocationStatus;
@@ -444,8 +437,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param mctsOutboundCallDeatils
-	 *            the mctsOutboundCallDeatils to set
+	 * @param mctsOutboundCallDeatils the mctsOutboundCallDeatils to set
 	 */
 	public void setMctsOutboundCallDeatils(List<MctsOutboundCallDetail> mctsOutboundCallDeatils) {
 		this.mctsOutboundCallDeatils = mctsOutboundCallDeatils;
@@ -459,8 +451,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param user
-	 *            the user to set
+	 * @param user the user to set
 	 */
 	public void setUser(M_User user) {
 		this.user = user;
@@ -474,8 +465,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param mctsDataReaderDetail
-	 *            the mctsDataReaderDetail to set
+	 * @param mctsDataReaderDetail the mctsDataReaderDetail to set
 	 */
 	public void setMctsDataReaderDetail(MctsDataReaderDetail mctsDataReaderDetail) {
 		this.mctsDataReaderDetail = mctsDataReaderDetail;
@@ -489,8 +479,7 @@ public class MctsOutboundCall implements Serializable {
 	}
 
 	/**
-	 * @param childValidDataHandler
-	 *            the childValidDataHandler to set
+	 * @param childValidDataHandler the childValidDataHandler to set
 	 */
 	public void setChildValidDataHandler(ChildValidDataHandler childValidDataHandler) {
 		this.childValidDataHandler = childValidDataHandler;

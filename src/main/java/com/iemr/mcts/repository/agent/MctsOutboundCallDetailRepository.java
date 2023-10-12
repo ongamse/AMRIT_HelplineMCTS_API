@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.repository.agent;
 
 import java.sql.Timestamp;
@@ -12,6 +33,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iemr.mcts.data.agent.MctsOutboundCallDetail;
+import com.iemr.mcts.data.supervisor.CallType;
 
 @Repository
 @RestResource(exported = false)
@@ -21,15 +43,13 @@ public interface MctsOutboundCallDetailRepository extends CrudRepository<MctsOut
 			+ " (select c.obCallID from MctsOutboundCall c where c.motherID = :motherID) order by cd.createdDate desc")
 	public ArrayList<MctsOutboundCallDetail> getMotherCallHistory(@Param("motherID") Long motherID);
 	
-//	@Query("select cd from MctsOutboundCallDetail cd where cd.obCallID in "
-//			+ " (select c.obCallID from MctsOutboundCall c where c.childID = :childID)")
 	@Query("select cd from MctsOutboundCallDetail cd join cd.callType where cd.obCallID in "
 			+ " (select c.obCallID from MctsOutboundCall c where c.childID = :childID) order by cd.createdDate desc")
 	public ArrayList<MctsOutboundCallDetail> getChildCallHistory(@Param("childID") Long childID);
 	
-	@Query("select cd from MctsOutboundCallDetail cd where cd.czentrixCallID = :czentrixCallID "
+	@Query("select cd from MctsOutboundCallDetail cd where cd.callId = :callId "
 			+ "and cd.allocatedUserID = :allocatedUserID")
-	public MctsOutboundCallDetail isAvailable(@Param("czentrixCallID") String czentrixCallID, @Param("allocatedUserID") Integer allocatedUserID);
+	public MctsOutboundCallDetail isAvailable(@Param("callId") String callId, @Param("allocatedUserID") Integer allocatedUserID);
 	
 	@Transactional
 	@Modifying
@@ -80,5 +100,8 @@ public interface MctsOutboundCallDetailRepository extends CrudRepository<MctsOut
 	
 	@Query("select cd.callTime from MctsOutboundCallDetail cd where cd.callDetailID = :callDetailID")
 	public Timestamp getCallStartTime(@Param("callDetailID") Long callDetailID);
+
+	@Query(value="select CallTypeID from db_iemr.m_callType where CallType='default null callType' order by CreatedDate DESC LIMIT 1",nativeQuery=true)
+	public Integer getCallTypeId();
 
 }

@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.agent;
 
 import java.sql.Date;
@@ -13,7 +34,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.mcts.data.supervisor.MctsQAMappingDetail;
 import com.iemr.mcts.data.supervisor.QuestionnaireDetail;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 
@@ -34,10 +54,6 @@ public class MctsCallResponseDetail {
 	@Expose
 	@Column(name = "ChildID")
 	private Long childID;
-
-//	@Expose
-//	@Column(name = "CallDetailID", insertable = true, updatable = false)
-//	private Long callDetailID;
 
 	@Expose
 	@Column(name = "BenCallID", insertable = true, updatable = false)
@@ -78,7 +94,7 @@ public class MctsCallResponseDetail {
 	@Expose
 	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
+
 	@Expose
 	@Column(name = "outboundCallType")
 	private String outboundCallType;
@@ -98,8 +114,6 @@ public class MctsCallResponseDetail {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BenCallID", insertable = false, updatable = false)
 	private MctsOutboundCallDetail mctsOutboundCallDetail;
-
-	
 
 	private static OutputMapper outputMapper = new OutputMapper();
 
@@ -201,25 +215,6 @@ public class MctsCallResponseDetail {
 		this.questionID = questionID;
 	}
 
-//	/**
-//	 * @return the benCallID
-//	 */
-//	public Long getBenCallID() {
-//		return benCallID;
-//	}
-//
-//	/**
-//	 * @param benCallID the benCallID to set
-//	 */
-//	public void setBenCallID(Long benCallID) {
-//		this.benCallID = benCallID;
-//	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
@@ -232,7 +227,5 @@ public class MctsCallResponseDetail {
 	public void setOutboundCallType(String outboundCallType) {
 		this.outboundCallType = outboundCallType;
 	}
-
-	
 
 }

@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.domain;
 
 import java.sql.Timestamp;
@@ -8,11 +29,11 @@ import lombok.Data;
 @Data
 public class IdentityDTO {
 
-	private String eventTypeName; // created, reserved, registered, modified, deleted
+	private String eventTypeName;
 	private Timestamp eventTypeDate;
 	private Integer agentId;
 	private String agentName;
-	private Integer agentPSMapId; // ProviderServiceMapId
+	private Integer agentPSMapId;
 	private String agentComment;
 	private Integer serviceId;
 	private String serviceName;
@@ -22,13 +43,12 @@ public class IdentityDTO {
 	private String stateName;
 	private Integer providerServiceMapId;
 
-	// details
 	private Integer areaId;
 	private Integer beneficiaryId;
 	private Integer beneficiaryRegId;
 	private Integer communityId;
 	private String community;
-	private Timestamp dob; //int age
+	private Timestamp dob;
 	private Integer age;
 	private Timestamp marriageDate;
 	private Integer ageAtMarriage;
@@ -84,13 +104,9 @@ public class IdentityDTO {
 
 	// family tagging
 	List<BenFamilyDTO> benFamilyDTOs;
-	// private Boolean isEmergencyContact;
-	// private String relationshipToSelf;
-	// private BigInteger associatedBenRegId;
 
 	// identities
 	private List<Identity> identities;
-	
 
 	private Integer sexualOrientationID;
 	private String sexualOrientationType;

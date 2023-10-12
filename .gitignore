@@ -5,3 +5,7 @@ target
 bin
 *.bat
 .factorypath
+/logs
+
+# Properties
+src/main/environment/mcts_local.properties

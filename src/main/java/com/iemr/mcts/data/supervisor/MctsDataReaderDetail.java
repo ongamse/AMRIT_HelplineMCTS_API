@@ -1,18 +1,35 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.supervisor;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -35,7 +52,7 @@ public class MctsDataReaderDetail implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	private Long MotherValidRecordID;
-	
+
 	@Expose
 	@Column(name = "BeneficiaryRegID", insertable = true, updatable = false)
 	private Long BeneficiaryRegID;
@@ -43,7 +60,7 @@ public class MctsDataReaderDetail implements Serializable {
 	@Transient
 	@Expose
 	private String beneficiaryID;
-	
+
 	@Expose
 	private Date Date_of_Entry;
 
@@ -51,7 +68,7 @@ public class MctsDataReaderDetail implements Serializable {
 	private Long Entry_type;
 
 	@Expose
-	@Column(name = "MCTSID_no", insertable = true, updatable = true) 
+	@Column(name = "MCTSID_no", insertable = true, updatable = true)
 	private Long MCTSID_no;
 
 	@Expose
@@ -143,8 +160,6 @@ public class MctsDataReaderDetail implements Serializable {
 		ANM_Ph = aNM_Ph;
 	}
 
-
-
 	@Expose
 	private Long ASHA_ID;
 
@@ -182,8 +197,6 @@ public class MctsDataReaderDetail implements Serializable {
 	public void setAddress(String address) {
 		Address = address;
 	}
-
-
 
 	@Expose
 	private Date LMP_Date;
@@ -382,7 +395,7 @@ public class MctsDataReaderDetail implements Serializable {
 
 	@Expose
 	private Boolean High_Risk;
-	
+
 	@Expose
 	private String High_Risk_Reason;
 
@@ -445,7 +458,7 @@ public class MctsDataReaderDetail implements Serializable {
 
 	@Expose
 	private String BPL_APL;
-	
+
 	@Expose
 	@Column(name = "FileID")
 	private Long FileID;
@@ -490,26 +503,10 @@ public class MctsDataReaderDetail implements Serializable {
 
 	@Expose
 	private Date LastModDate;
-	
+
 	@Expose
 	private String InValid_Reason;
-	
-	/**
-	 * file attributes name
-	 */
-//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "FileID", referencedColumnName="fileID", insertable = true, updatable = false)
-//	@Expose
-//	private FileManager fileManager;
-	
-//	/**
-//	 * beneficiary detail mapping
-//	 */
-//	@Transient
-//	@OneToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "BeneficiaryRegID", insertable = false, updatable = false)
-//	private BeneficiaryDetail beneficiaryDetail;
-	
+
 	/**
 	 * @return the isAllocated
 	 */
@@ -523,20 +520,6 @@ public class MctsDataReaderDetail implements Serializable {
 	public void setIsAllocated(Boolean isAllocated) {
 		IsAllocated = isAllocated;
 	}
-
-	/**
-	 * @return the fileManager
-	 */
-//	public FileManager getFileManager() {
-//		return fileManager;
-//	}
-//
-//	/**
-//	 * @param fileManager the fileManager to set
-//	 */
-//	public void setFileManager(FileManager fileManager) {
-//		this.fileManager = fileManager;
-//	}
 
 	/**
 	 * @return the is_Valid
@@ -605,7 +588,7 @@ public class MctsDataReaderDetail implements Serializable {
 	 * @param eDD the eDD to set
 	 */
 	public void setEDD(Date eDD) {
-		
+
 		EDD = eDD;
 	}
 
@@ -741,7 +724,7 @@ public class MctsDataReaderDetail implements Serializable {
 	public Boolean getHigh_Risk() {
 		return High_Risk;
 	}
-	
+
 	/**
 	 * @return the aNM_Name
 	 */
@@ -846,7 +829,7 @@ public class MctsDataReaderDetail implements Serializable {
 	public void setHigh_Risk_Reason(String high_Risk_Reason) {
 		High_Risk_Reason = high_Risk_Reason;
 	}
-	
+
 	/**
 	 * @return the motherValidRecordID
 	 */
@@ -860,7 +843,7 @@ public class MctsDataReaderDetail implements Serializable {
 	public void setMotherValidRecordID(Long motherValidRecordID) {
 		MotherValidRecordID = motherValidRecordID;
 	}
-	
+
 	/**
 	 * @return the husband_Name
 	 */
@@ -972,8 +955,6 @@ public class MctsDataReaderDetail implements Serializable {
 	public void setWhom_PhoneNo(String whom_PhoneNo) {
 		Whom_PhoneNo = whom_PhoneNo;
 	}
-	
-	
 
 	/**
 	 * @return the phoneNo_Of_Whom
@@ -989,11 +970,11 @@ public class MctsDataReaderDetail implements Serializable {
 		PhoneNo_Of_Whom = phoneNo_Of_Whom;
 	}
 
-
-
 	private static OutputMapper outputMapper = new OutputMapper();
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -1001,7 +982,9 @@ public class MctsDataReaderDetail implements Serializable {
 		return outputMapper.gson().toJson(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -1012,7 +995,9 @@ public class MctsDataReaderDetail implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -1031,10 +1016,10 @@ public class MctsDataReaderDetail implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	public static Timestamp getCreatedDateInTimestamp(MctsDataReaderDetail mctsDataReaderDetail) {
 		Timestamp timestamp = new Timestamp(mctsDataReaderDetail.CreatedDate.getTime());
 		return timestamp;
 	}
-	
+
 }

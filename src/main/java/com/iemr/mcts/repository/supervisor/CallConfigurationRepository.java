@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.repository.supervisor;
 
 import java.sql.Date;
@@ -99,7 +120,6 @@ public interface CallConfigurationRepository extends CrudRepository<CallConfigur
 	
 	
 	/*
-	 * modified by - DU20091017
 	 * mother data should only have ANC calls;
 	 */
 	@Query("select c from CallConfigurationDetail c "
@@ -109,7 +129,6 @@ public interface CallConfigurationRepository extends CrudRepository<CallConfigur
 	public ArrayList<CallConfigurationDetail> getMotherConfigTerms(@Param("providerServiceMapID") Long providerServiceMapID);
 	
 	/*
-	 * modified by - DU20091017
 	 * Child data should only have PNC calls;
 	 */
 	@Query("select c from CallConfigurationDetail c "

@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.data.supervisor;
 
 import java.sql.Date;
@@ -15,106 +36,106 @@ import com.google.gson.annotations.Expose;
 import com.iemr.mcts.utils.mapper.OutputMapper;
 
 @Entity
-@Table(name="m_MCTSCallConfiguration")
+@Table(name = "m_MCTSCallConfiguration")
 public class CallConfigurationDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
-	@Column(name="MCTSCallConfigID")
+	@Column(name = "MCTSCallConfigID")
 	private Integer mctsCallConfigID;
 
 	@Expose
-	@Column( name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Long providerServiceMapID;
 
-	@Expose	
-	@Column( name="OutboundCallType")
+	@Expose
+	@Column(name = "OutboundCallType")
 	private String outboundCallType;
-	
-	@Expose	
-	@Column( name="NoOfAttempts")
+
+	@Expose
+	@Column(name = "NoOfAttempts")
 	private Integer noOfAttempts;
-	
-	@Expose	
-	@Column( name="NextAttemptPeriod")
+
+	@Expose
+	@Column(name = "NextAttemptPeriod")
 	private String nextAttemptPeriod;
 
 	@Expose
-	@Column( name="FromTerm")
+	@Column(name = "FromTerm")
 	private String fromTerm;
 
 	@Expose
-	@Column(name="ToTerm")
+	@Column(name = "ToTerm")
 	private String toTerm;
-	
+
 	@Expose
-	@Column( name="NoOfAgents")
+	@Column(name = "NoOfAgents")
 	private Long noOfAgents;
-	
+
 	@Expose
-	@Column( name="TotalCallsPerDay")
+	@Column(name = "TotalCallsPerDay")
 	private Long totalCallsPerDay;
-	
+
 	@Expose
 	@Column(name = "EffectiveFrom")
 	private Date effectiveFrom;
-	
+
 	@Expose
 	@Column(name = "EffectiveUpto")
 	private Date effectiveUpto;
 
 	@Expose
-	@Column(name="Deleted", insertable = false, updatable = true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
 
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	
+
 	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Timestamp createdDate;
-	
+
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	
+
 	@Expose
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
+
 	@Expose
-	@Column(name="DisplayOBCallType")
+	@Column(name = "DisplayOBCallType")
 	private String displayOBCallType;
-	
+
 	@Transient
 	private Timestamp endDate;
-	
+
 	private static OutputMapper outputMapper = new OutputMapper();
-	
+
 	/**
 	 * Default Constructor
 	 */
-	public CallConfigurationDetail(){
-		
+	public CallConfigurationDetail() {
+
 	}
-	
+
 	/**
-	 * Constructor for outboundcalltype fromTerm and toTerm 
+	 * Constructor for outboundcalltype fromTerm and toTerm
 	 */
-	public CallConfigurationDetail(String outboundCallType, String fromTerm, String toTerm){
-		
+	public CallConfigurationDetail(String outboundCallType, String fromTerm, String toTerm) {
+
 		this.outboundCallType = outboundCallType;
 		this.fromTerm = fromTerm;
 		this.toTerm = toTerm;
 	}
-	
+
 	/**
-	 * Constructor for outboundcalltype fromTerm and toTerm 
+	 * Constructor for outboundcalltype fromTerm and toTerm
 	 */
-	public CallConfigurationDetail(Integer noOfAttempts, String nextAttemptPeriod){
-		
+	public CallConfigurationDetail(Integer noOfAttempts, String nextAttemptPeriod) {
+
 		this.noOfAttempts = noOfAttempts;
 		this.nextAttemptPeriod = nextAttemptPeriod;
 	}
@@ -329,7 +350,9 @@ public class CallConfigurationDetail {
 		CallConfigurationDetail.outputMapper = outputMapper;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -358,18 +381,5 @@ public class CallConfigurationDetail {
 	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
-	
-//	public static Comparator<CallConfigurationDetail> sortOnEffectiveFrom(){
-//		
-//		Comparator<CallConfigurationDetail> comp = new Comparator<CallConfigurationDetail>() {
-//			
-//			@Override
-//			public int compare(CallConfigurationDetail o1, CallConfigurationDetail o2) {
-//				
-//				return o1.getEffectiveFrom().compareTo(o2.getEffectiveFrom());
-//			}
-//		};
-//		
-//		return comp;
-//	}
+
 }

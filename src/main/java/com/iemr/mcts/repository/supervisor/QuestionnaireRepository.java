@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.repository.supervisor;
 
 import java.util.ArrayList;
@@ -28,13 +49,12 @@ public interface QuestionnaireRepository extends CrudRepository<QuestionnaireDet
 	@Query("update QuestionnaireDetail q set q.question = :question, q.triggerFeedback = :triggerFeedback, "
 			+ "q.triggerFeedbackFor = :triggerFeedbackFor, q.showText = :showText, q.showTextFor = :showTextFor, "
 			+ "q.questionRank = :questionRank, q.isMandatory = :isMandatory, q.interaction = :interaction "
-			+ "where :question is not null and :answerType is not null and "
-			+ "q.questionID = :questionID")
+			+ "where :question is not null and :answerType is not null and " + "q.questionID = :questionID")
 	public int updateQuestionnaire(@Param("questionID") Integer questionID, @Param("question") String question,
 			@Param("answerType") String answerType, @Param("triggerFeedback") Boolean triggerFeedback,
 			@Param("triggerFeedbackFor") String triggerFeedbackFor, @Param("showText") Boolean showText,
 			@Param("showTextFor") String showTextFor, @Param("questionRank") Integer questionRank,
-			@Param("isMandatory") Boolean isMandatory,@Param("interaction") String interaction);
+			@Param("isMandatory") Boolean isMandatory, @Param("interaction") String interaction);
 
 	@Transactional
 	@Modifying(clearAutomatically = true)
@@ -44,7 +64,4 @@ public interface QuestionnaireRepository extends CrudRepository<QuestionnaireDet
 			@Param("parentAnswer") String parentAnswer, @Param("questionID") Integer questionID,
 			@Param("providerServiceMapID") Long providerServiceMapID);
 
-//	@Query("select qn from QuestionnaireDetail qn where qn.questionRank = : questionRank and qn.")
-//	public QuestionnaireDetail checkRank(@Param("questionRank") Integer questionRank,
-//			@Param("outboundCallType") Integer outboundCallType,@Param("providerServiceMapID") Integer providerServiceMapID);
 }

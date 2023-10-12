@@ -1,4 +1,25 @@
-package com.iemr.mcts.controller.secondoryreport;
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+package com.iemr.mcts.controller.report;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,26 +40,27 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.iemr.mcts.services.secondaryreport.SecondaryDataReportService;
-import com.iemr.mcts.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @CrossOrigin
 @RequestMapping({ "/mctsReportController" })
 @RestController
-public class MctsSecondaryReportController {
+public class MCTSReportController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	@Autowired
 	private SecondaryDataReportService secondaryReportService;
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get MCTS data report")
 	@RequestMapping(value = "/getDataReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getDataReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"isMother\":\"Boolean\"}") @RequestBody String jsonRequest) {
-		String filename=null;
+		String filename = null;
 		InputStreamResource file = null;
 		try {
-			filename= getFileName(jsonRequest, "MCTSDataReport");
+			filename = getFileName(jsonRequest, "MCTSDataReport");
 			file = new InputStreamResource(secondaryReportService.getDataReport(jsonRequest, filename));
 			return ResponseEntity.ok()
 					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + (filename + ".xlsx"))
@@ -54,6 +76,7 @@ public class MctsSecondaryReportController {
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS call detail report")
 	@RequestMapping(value = "/getCallDetailReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getCallDetailReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest) {
@@ -76,6 +99,7 @@ public class MctsSecondaryReportController {
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS unique call detail report")
 	@RequestMapping(value = "/getCallDetailReportUnique", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getCallDetailReportUnique(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest) {
@@ -96,13 +120,14 @@ public class MctsSecondaryReportController {
 				return ResponseEntity.status(5000).body(e.getMessage());
 		}
 	}
-   
+
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS answered call report")
 	@RequestMapping(value = "/getCallAnsweredReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getCallAnsweredReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", "
 					+ "\"userID\":\"Integer\", \"callTypeName\":\"Answered or Not Answered\"}") @RequestBody String jsonRequest) {
-		
+
 		String filename = null;
 		InputStreamResource file = null;
 		try {
@@ -120,13 +145,13 @@ public class MctsSecondaryReportController {
 				return ResponseEntity.status(5000).body(e.getMessage());
 		}
 	}
-    
-    @CrossOrigin
+
+	@CrossOrigin
+	@ApiOperation(value = "Get MCTS complaint report")
 	@RequestMapping(value = "/getComplaintReport", method = RequestMethod.POST, headers = "Authorization")
-	public  ResponseEntity<Object> getComplaintReport(@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}")
-			@RequestBody String jsonRequest)
-	{
-    	String filename = null;
+	public ResponseEntity<Object> getComplaintReport(
+			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest) {
+		String filename = null;
 		InputStreamResource file = null;
 		try {
 			filename = getFileName(jsonRequest, "Complaint_Report");
@@ -143,33 +168,35 @@ public class MctsSecondaryReportController {
 				return ResponseEntity.status(5000).body(e.getMessage());
 		}
 	}
-    
-    @CrossOrigin
-	@RequestMapping(value = "/getInvalidRecordReport", method = RequestMethod.POST,headers = "Authorization")
-	public ResponseEntity<Object> getInvalidRecordReport(@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"isMother\":\"Boolean\"}")
-			@RequestBody String jsonRequest){
-	 String filename=null;
-	 InputStreamResource file = null;
-	{
-		
-		try {
-			filename= getFileName(jsonRequest, "Invalid_Records_Report");
-			file = new InputStreamResource(secondaryReportService.getInvalidRecordReport(jsonRequest, filename));
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + (filename + ".xlsx"))
-					.contentType(MediaType.parseMediaType("application/vnd.ms-excel")).body(file);
-		} catch (Exception e) {
-			logger.error("Report Name:" + filename + " Timestamp:" + System.currentTimeMillis() + " Error: "
-					+ e.getMessage());
-			if (e.getMessage().equalsIgnoreCase("No data found"))
-				return ResponseEntity.status(500).body(e.getMessage());
-			else
-				return ResponseEntity.status(5000).body(e.getMessage());
+
+	@CrossOrigin
+	@ApiOperation(value = "Get MCTS invalid record report")
+	@RequestMapping(value = "/getInvalidRecordReport", method = RequestMethod.POST, headers = "Authorization")
+	public ResponseEntity<Object> getInvalidRecordReport(
+			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"isMother\":\"Boolean\"}") @RequestBody String jsonRequest) {
+		String filename = null;
+		InputStreamResource file = null;
+		{
+
+			try {
+				filename = getFileName(jsonRequest, "Invalid_Records_Report");
+				file = new InputStreamResource(secondaryReportService.getInvalidRecordReport(jsonRequest, filename));
+				return ResponseEntity.ok()
+						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + (filename + ".xlsx"))
+						.contentType(MediaType.parseMediaType("application/vnd.ms-excel")).body(file);
+			} catch (Exception e) {
+				logger.error("Report Name:" + filename + " Timestamp:" + System.currentTimeMillis() + " Error: "
+						+ e.getMessage());
+				if (e.getMessage().equalsIgnoreCase("No data found"))
+					return ResponseEntity.status(500).body(e.getMessage());
+				else
+					return ResponseEntity.status(5000).body(e.getMessage());
+			}
 		}
-	}
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS unanswered call report")
 	@RequestMapping(value = "/getCallNotAnsweredReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getCallNotAnsweredReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", "
@@ -193,6 +220,7 @@ public class MctsSecondaryReportController {
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS high risk report")
 	@RequestMapping(value = "/getHighRiskReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getHighRiskReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest) {
@@ -215,6 +243,7 @@ public class MctsSecondaryReportController {
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get MCTS daily report")
 	@RequestMapping(value = "/getDailyReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getDailyReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", "
@@ -238,10 +267,11 @@ public class MctsSecondaryReportController {
 	}
 
 	@CrossOrigin
+	@ApiOperation(value = "Get NHM report")
 	@RequestMapping(value = "/getNHMReport", method = RequestMethod.POST, headers = "Authorization")
 	public ResponseEntity<Object> getNHMReport(
 			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest) {
-		String filename =null;
+		String filename = null;
 		InputStreamResource file = null;
 		try {
 			filename = getFileName(jsonRequest, "MCTSNHMReport");
@@ -258,13 +288,14 @@ public class MctsSecondaryReportController {
 				return ResponseEntity.status(5000).body(e.getMessage());
 		}
 	}
-	
+
 	@CrossOrigin
+	@ApiOperation(value = "Get congenital anomalies report")
 	@RequestMapping(value = "/getCongenitalAnomaliesReport", method = RequestMethod.POST, headers = "Authorization")
-	public ResponseEntity<Object> getCongenitalAnomaliesReport(@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}")
-			@RequestBody String jsonRequest, HttpServletRequest httpRequest)
-	{
-		String filename =null;
+	public ResponseEntity<Object> getCongenitalAnomaliesReport(
+			@ApiParam("{\"startDate\":\"Timestamp\", \"endDate\":\"Timestamp\", \"providerServiceMapID\":\"Integer \", \"userID\":\"Integer\"}") @RequestBody String jsonRequest,
+			HttpServletRequest httpRequest) {
+		String filename = null;
 		InputStreamResource file = null;
 		try {
 			filename = getFileName(jsonRequest, "Congenital_Anomalies_Report");
@@ -294,7 +325,7 @@ public class MctsSecondaryReportController {
 		}
 		if (fileName == null)
 			fileName = name;
-		
+
 		return fileName;
 	}
 }

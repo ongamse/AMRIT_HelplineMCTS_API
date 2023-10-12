@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.model.beneficiary;
 
 import java.sql.Date;
@@ -16,17 +37,12 @@ import com.iemr.mcts.model.userbeneficiary.Status;
 import lombok.Data;
 
 @Data
-public class BeneficiaryModel
-{
-	
+public class BeneficiaryModel {
+
 	private Long beneficiaryRegID;
 	private BeneficiaryDemographicsModel i_bendemographics;
-	// private List<BenMedHistoryModel> t_benmedhistory;
 	private List<BenPhoneMapModel> benPhoneMaps;
 	private List<BenPhoneMapModel> parentBenPhoneMaps;
-	// private List<OutboundCallRequestModel> outboundCallRequests;
-	// private List<BeneficiaryCallModel> beneficiaryCalls;
-	// private List<FeedbackDetailsModel> feedbacks;
 	private String beneficiaryID;
 	private Short titleId;
 	private String titleName;
@@ -60,33 +76,31 @@ public class BeneficiaryModel
 	private String createdBy;
 	private Timestamp createdDate;
 	private String modifiedBy;
-	//private Timestamp lastModDate;
 	private Boolean isHIVPos;
 	private String placeOfWork;
 	private String remarks;
 	private Long providerServiceMapID;
 	private List<BeneficiaryIdentityModel> beneficiaryIdentities;
-	
-	//For Data Sync
+
+	// For Data Sync
 	private Integer vanID;
-	
+
 	private Integer actualAge;
 
 	public BeneficiaryModel() {
-		
-		
+
 	}
-	
-	public static Date getJavaSqlData(Timestamp timestamp)
-	{
-		if(timestamp!=null) {
-		LocalDateTime ld = timestamp.toLocalDateTime();
-		return Date.valueOf(ld.toLocalDate());}
-		
+
+	public static Date getJavaSqlData(Timestamp timestamp) {
+		if (timestamp != null) {
+			LocalDateTime ld = timestamp.toLocalDateTime();
+			return Date.valueOf(ld.toLocalDate());
+		}
+
 		else {
-			
+
 			Date d = null;
-			
+
 			return d;
 		}
 	}

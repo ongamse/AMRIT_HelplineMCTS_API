@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.mcts.secondary.data.report;
 
 import java.io.Serializable;
@@ -18,15 +39,14 @@ import com.iemr.mcts.utils.mapper.OutputMapper;
 @Entity
 @Table(name = "fact_bencall", schema = "db_reporting")
 
-public class SecondaryCallReport implements Serializable 
-{
+public class SecondaryCallReport implements Serializable {
 
 	@Transient
 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-	
+
 	@Transient
-	String callDuartion ;
-	
+	String callDuartion;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Fact_BenCallID")
@@ -36,7 +56,6 @@ public class SecondaryCallReport implements Serializable
 	@Column(name = "BenCallID")
 	private Long benCallID;
 
-	
 	@Column(name = "BeneficiaryRegID")
 	private Long beneficiaryRegID;
 
@@ -88,7 +107,7 @@ public class SecondaryCallReport implements Serializable
 
 	@Expose
 	@Column(name = "ReceivedAgentID")
-	private String agentID;	
+	private String agentID;
 
 	@Expose
 	@Column(name = "CallEndUserID")
@@ -117,7 +136,6 @@ public class SecondaryCallReport implements Serializable
 	@Column(name = "CreatedBy")
 	private String createdBy;
 
-	
 	@Column(name = "CreatedDate")
 	private Timestamp createdDate;
 	@Expose
@@ -126,54 +144,34 @@ public class SecondaryCallReport implements Serializable
 	@Expose
 	@Column(name = "CZCallDuration")
 	private Integer czCallDuration;
-
-//	@OneToOne
-//	@JoinColumn(updatable = false, insertable = false, name = "beneficiaryRegID", referencedColumnName = "beneficiaryRegID")
-//	private BenDetails beneficiaryReport;
-
 	// search params
 	@Transient
 	private Timestamp startDateTime;
 
 	@Transient
 	private Timestamp endDateTime;
-	
-//	@OneToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "CallReceivedUserID", referencedColumnName = "UserID", insertable = false, updatable = false)
-//	private DimUserReport userReportObj;
-
-	
-//	public CallReport()
-//	{
-//		super();
-//	}
 
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public Timestamp getStartDateTime()
-	{
+	public Timestamp getStartDateTime() {
 		return startDateTime;
 	}
 
-	public Timestamp getEndDateTime()
-	{
+	public Timestamp getEndDateTime() {
 		return endDateTime;
 	}
 
-	public Integer getProviderServiceMapID()
-	{
+	public Integer getProviderServiceMapID() {
 		return providerServiceMapID;
 	}
-	
-	public String getAgentID()
-	{
+
+	public String getAgentID() {
 		return agentID;
 	}
 
@@ -221,14 +219,6 @@ public class SecondaryCallReport implements Serializable
 		return createdDate;
 	}
 
-//	public BenDetails getBeneficiaryReport() {
-//		return beneficiaryReport;
-//	}
-//
-//	public void setBeneficiaryReport(BenDetails beneficiaryReport) {
-//		this.beneficiaryReport = beneficiaryReport;
-//	}
-
 	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
@@ -244,10 +234,9 @@ public class SecondaryCallReport implements Serializable
 	public void setReceivedRoleName(String receivedRoleName) {
 		this.receivedRoleName = receivedRoleName;
 	}
-	
-	@Column(name="RecordingFilePath")
-	private String recordingFilePath;
 
+	@Column(name = "RecordingFilePath")
+	private String recordingFilePath;
 
 	public String getRecordingFilePath() {
 		return recordingFilePath;
@@ -269,8 +258,6 @@ public class SecondaryCallReport implements Serializable
 		this.callID = callID;
 	}
 
-
-
 	public String getCallDuartion() {
 		return callDuartion;
 	}
@@ -279,15 +266,4 @@ public class SecondaryCallReport implements Serializable
 		this.callDuartion = callDuartion;
 	}
 
-//	public DimUserReport getUserReportObj() {
-//		return userReportObj;
-//	}
-//
-//	public void setUserReportObj(DimUserReport userReportObj) {
-//		this.userReportObj = userReportObj;
-//	}
-	
-	
-
 }
-
